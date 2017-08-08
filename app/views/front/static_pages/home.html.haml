@@ -1,9 +1,5 @@
 .g-content
   %header#g-header.g-header
-    %a.g-logo.g-logo_top{:href => "#"}
-      =image_tag 'landing/logo.svg', class: 'g-logo__img'
-      =image_tag 'landing/logo_mobile.svg', class: 'g-logo__img g-logo__img_mobile'
-      
     #menu-wrapper.g-menu
       .g-menu-top
         %a.g-logo{:href => "#"}
@@ -66,7 +62,7 @@
           Золотой партнёр
           %br>/
           «1С-Битрикс»
-      %a.g-social.g-social_interact
+      %a.g-social.g-social_interact{href: "http://www.i-association.ru/members/view/37"}
         %svg.g-social__img.g-social__img_interact
           %use{"xlink:href" => "#ic-interact"}
         %svg.g-social__img.g-social__img-small.g-social__img_interact_small

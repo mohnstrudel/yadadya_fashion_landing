@@ -56,5 +56,14 @@
           %svg.g-input__icon.g-input__icon_success
             %use{"xlink:href" => "#ic-input-success"}
         .g-input__error Поле заполнено некорректно
+
+      .g-input
+        =f.text_field :facebook, class: 'g-input__field js-input', placeholder: 'Ссылка на аккаунт в Facebook'
+        .g-input__flag
+          %svg.g-input__icon.g-input__icon_error
+            %use{"xlink:href" => "#ic-input-error"}
+          %svg.g-input__icon.g-input__icon_success
+            %use{"xlink:href" => "#ic-input-success"}
+        .g-input__error Поле заполнено некорректно
       
       =f.submit "Отправить", class: 'g-btn g-btn_submit', data: { "disable-with": "Отправляю..." }
