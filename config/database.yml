@@ -82,4 +82,4 @@ production:
   <<: *default
   database: fashion_landing_production
   username: fashion_landing
-  password: <%= ENV['FASHION_LANDING_DATABASE_PASSWORD'] %>
+  password: <%= Figaro.env.fashion_landing_database_password %>
