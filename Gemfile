@@ -42,6 +42,7 @@ gem 'haml-rails'
 gem "font-awesome-rails"
 gem 'bootstrap-glyphicons'
 gem 'devise'
+gem 'rollbar'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -49,9 +50,21 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+
+
 end
 
 group :development do
+
+  gem 'capistrano'
+  gem 'capistrano-rvm'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano3-puma'
+  gem 'capistrano-nvm', require: false
+  gem 'capistrano-yarn'
+
+  gem 'capistrano-figaro-yml'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
