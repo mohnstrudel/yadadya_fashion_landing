@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require jquery
 //= require bxslider
-//= require malihu-custom-scrollbar-plugin
+//= require malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar
+//= require jquery.inputmask/dist/jquery.inputmask.bundle
 //= require turbolinks
 //= require_tree ../../../app/assets/javascripts/front/.

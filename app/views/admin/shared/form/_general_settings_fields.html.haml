@@ -1,0 +1,32 @@
+-if object.respond_to?(:url)
+  .form-group
+    %label.col-sm-2.control-label Url
+    .col-sm-10
+      =f.text_field :url, class: 'form-control'
+      %span.help-block.m-b-none Site url (http://example.com)
+  .hr-line-dashed
+-if object.respond_to?(:logo)
+  .form-group
+    %label.col-sm-2.control-label Logo
+    .col-sm-8
+      .fileinput.fileinput-new.input-group{"data-provides" => "fileinput"}
+        .form-control{"data-trigger" => "fileinput"}
+          %i.glyphicon.glyphicon-file.fileinput-exists
+          %span.fileinput-filename
+        %span.input-group-addon.btn.btn-default.btn-file
+          %span.fileinput-new Select file
+          %span.fileinput-exists Change
+          =f.file_field :logo
+          
+        %a.input-group-addon.btn.btn-default.fileinput-exists{"data-dismiss" => "fileinput", :href => "#"} Remove
+    .col-sm-2
+      -if object.logo.file.exists?
+        =image_tag object.logo.url(:mini_thumb)
+  .hr-line-dashed
+-if object.respond_to?(:language)
+  .form-group
+    %label.col-sm-2.control-label Select languages
+    .col-sm-10
+      =render partial: 'admin/shared/form/language_select', locals: { f: f, object: object }
+      %span.help-block.m-b-none Site url (http://example.com)
+  .hr-line-dashed

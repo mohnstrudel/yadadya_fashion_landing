@@ -1,0 +1,14 @@
+.row
+  .col-lg-12
+    .ibox
+      .ibox-title
+        %h5
+          Select2
+          %small https://select2.github.io/
+      .ibox-content
+        .row
+          .col-md-12
+            %p
+              Select2 also supports multi-value select boxes. The select below is declared with the multiple attribute.
+            =f.select :language, options_for_select(Rails.application.config.languages.collect{ |u| [u[1], u[0]] }, object.language.try(:map){|u| u[1]}), {}, { class: "select2_language form-control", multiple: true }
+            / =f.select :language, options_for_select("VISA" => "MasterCard"), {}, {class: "select2_language form-control", multiple: true }

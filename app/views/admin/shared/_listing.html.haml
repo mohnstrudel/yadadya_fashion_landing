@@ -1,0 +1,81 @@
+.row
+  .col-lg-12
+    .ibox.float-e-margins
+      .ibox-title
+        %h5
+          ="#{object_name(object).pluralize.capitalize} here"
+        .ibox-tools
+          %a.collapse-link
+            %i.fa.fa-chevron-up
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %i.fa.fa-wrench
+          %ul.dropdown-menu.dropdown-user
+            %li
+              %a{:href => "#"} Config option 1
+            %li
+              %a{:href => "#"} Config option 2
+          %a.close-link
+            %i.fa.fa-times
+      .ibox-content
+        .row
+          .col-sm-12.m-b-xs
+            .pull-right
+              =link_to "Create new #{object_name(object)}", send("new_admin_#{local_assigns[:namespace]}#{object_name(object)}_path"), class: "btn btn-w-m btn-primary"
+        .table-responsive
+          %table.table.table-striped
+            %thead
+              %tr
+                %th
+                -if object.has_attribute? :url
+                  %th URL
+                -if object.has_attribute? :title
+                  %th
+                    =t('admin.form.model.title')
+                -if object.has_attribute? :first_name
+                  %th
+                    =t('admin.form.model.first_name')
+                -if object.has_attribute? :body
+                  %th
+                    =t('admin.form.model.body')
+                -if object.has_attribute? :slug
+                  %th
+                    =t('admin.form.model.slug')
+                -if object.has_attribute? :email
+                  %th
+                    =t('admin.form.model.email')
+                %th
+                  =t('admin.form.model.created')
+                %th.text-right
+                  =t('admin.form.actions.main')
+            %tbody
+              -object.each do |obj|
+                %tr
+                  %td
+                    %input.i-checks{:name => "input[]", :type => "checkbox"}/
+                  -if obj.respond_to?(:url)
+                    %td
+                      =obj.url
+                  -if obj.respond_to?(:title)
+                    %td
+                      =obj.title
+                  -if obj.respond_to?(:first_name)
+                    %td
+                      =obj.first_name
+                  -if obj.respond_to?(:body)
+                    %td
+                      %small
+                        =obj.body
+                  -if obj.respond_to?(:slug)
+                    %td
+                      =url_for_page(obj)
+                  -if obj.respond_to?(:email)
+                    %td
+                      =obj.email
+
+                  %td
+                    =time_ago_in_words(obj.created_at)
+                    =t('admin.form.created_ago')
+                  %td.text-right
+                    .btn-group
+                      =link_to t('admin.form.actions.edit'), send("edit_admin_#{local_assigns[:namespace]}#{object_name(object)}_path", obj), class: "btn-white btn btn-xs"
+                      =link_to t('admin.form.actions.delete'), send("admin_#{local_assigns[:namespace]}#{object_name(object)}_path", obj), method: :delete, data: {confirm: t('admin.form.confirm') }, class: "btn-white btn btn-xs"

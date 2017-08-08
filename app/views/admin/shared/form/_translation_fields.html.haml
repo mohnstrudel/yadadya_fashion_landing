@@ -1,0 +1,34 @@
+-@remaining_locales.each do |rem_locale|
+  .ibox.float-e-margins
+    .ibox-title
+      %h5
+        =rem_locale
+        %small With custom checbox and radion elements.
+      .ibox-tools
+        %a.collapse-link
+          %i.fa.fa-chevron-up
+        %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+          %i.fa.fa-wrench
+        %ul.dropdown-menu.dropdown-user
+          %li
+            %a{:href => "#"} Config option 1
+          %li
+            %a{:href => "#"} Config option 2
+        %a.close-link
+          %i.fa.fa-times
+    .ibox-content
+      -object.globalize_attribute_names.each do |lang|
+        -if Language.remaining_included?(lang, rem_locale)
+          .form-group
+            %label.col-sm-2.control-label
+              =lang
+            .col-sm-10
+              =f.send(Language.get_fields(lang, object), lang, class: 'form-control')
+
+              / =f.text_field :title, class: 'form-control'
+          .hr-line-dashed
+      .hr-line-dashed
+      .form-group
+        .col-sm-4.col-sm-offset-2
+          =link_to "Back", send("admin_#{local_assigns[:namespace]}#{object_name(object).pluralize}_path"), class: 'btn btn-white'
+          =f.submit "Save", class: 'btn btn-primary'

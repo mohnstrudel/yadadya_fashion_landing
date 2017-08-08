@@ -1,0 +1,2 @@
+module Front::RequestsHelper
+end

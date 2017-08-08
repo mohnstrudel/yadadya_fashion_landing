@@ -38,6 +38,10 @@ gem 'jbuilder', '~> 2.5'
 
 # CUSTOM GEMS
 gem 'haml-rails'
+# Use font awesome and Glyphicons
+gem "font-awesome-rails"
+gem 'bootstrap-glyphicons'
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
