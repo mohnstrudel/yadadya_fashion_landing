@@ -1,0 +1,75 @@
+.g-content
+  %header#g-header.g-header
+    %a.g-logo.g-logo_top{:href => "#"}
+      =image_tag 'landing/logo.svg', class: 'g-logo__img'
+      =image_tag 'landing/logo_mobile.svg', class: 'g-logo__img g-logo__img_mobile'
+      
+    #menu-wrapper.g-menu
+      .g-menu-top
+        %a.g-logo{:href => "#"}
+          %img.g-logo__img.g-logo__img_small{:src => "img/logo-small.svg"}/
+        %a.g-close.js-menu{:href => "javascript:void(0)"}
+          %i.g-close__icon
+      .g-menu__list
+        %a.g-menu__list-item{:href => "#"} Услуги
+        %a.g-menu__list-item{:href => "#"} Проекты
+        %a.g-menu__list-item{:href => "about.html"} Компания
+        %a.g-menu__list-item.g-menu__list-item_active{:href => "blog.html"} Блог
+        %a.g-menu__list-item{:href => "contact.html"} Контакты
+        %p.g-menu__text
+          %a.g-menu__phone{:href => "tel:74953745811"} +7 (495) 374-58-11
+          %a.g-menu__social.g-menu__social_fb
+            %svg.g-icon
+              %use{"xlink:href" => "#ic-facebook"}
+          %a.g-menu__social.g-menu__social_mail{:href => "mailto:info@yadadya.com"}
+            %svg.g-icon
+              %use{"xlink:href" => "#ic-mail"}
+      %p.g-menu__info
+        %a.g-menu__phone{:href => "tel:74953745811"} +7 (495) 374-58-11
+        %a.g-menu__mail{:href => "mailto:info@yadadya.com"} info@yadadya.com
+  =render partial: 'front/static_pages/home_sections/welcome'
+
+  =render partial: 'front/static_pages/home_sections/breakfast_themes'
+  
+  =render partial: 'front/static_pages/home_sections/interesting_for'
+
+  =render partial: 'front/static_pages/home_sections/speakers'
+  
+  / =render partial: 'front/static_pages/home_sections/events'
+ 
+  =render partial: 'front/static_pages/home_sections/program'
+
+  =render partial: 'front/static_pages/home_sections/organizators'
+
+  =render partial: 'front/static_pages/home_sections/about'  
+  
+
+  %footer.g-footer
+    .g-wrapper
+      %p.g-copy
+        © 2013 - 2017 Интернет-агентство Я.Creations.
+        %br/
+        Все права защищены.
+      %a.g-social.g-social_fb{href: "https://www.facebook.com/yadadyacreations/"}
+        %svg.g-social__img.g-social__img_fb
+          %use{"xlink:href" => "#ic-fb-footer"}
+        %span.g-social__text
+          Мы 
+          %br/
+          в Facebook
+      %a.g-social.g-social_bitrix{href: "https://www.1c-bitrix.ru/partners/901268.php"}
+        %svg.g-social__img.g-social__img_bitrix
+          %use{"xlink:href" => "#ic-bitrix"}
+        %span.g-social__text
+          Золотой партнёр
+          %br>/
+          «1С-Битрикс»
+      %a.g-social.g-social_interact
+        %svg.g-social__img.g-social__img_interact
+          %use{"xlink:href" => "#ic-interact"}
+        %svg.g-social__img.g-social__img-small.g-social__img_interact_small
+          %use{"xlink:href" => "#ic-interact_small"}
+        %span.g-social__text
+          Член ассоциации
+          %br>/
+          интерактивных агентств
