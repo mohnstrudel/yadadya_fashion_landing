@@ -30,29 +30,47 @@ module AdminHelper
 
   def breadcrumbs
     # Session breadcrumbs is defines in the admin_controller via a before_action filter
-    bc = session[:breadcrumbs]
-    @content = content_tag("h2", bc.last)
-    @content << content_tag(:ol, class: "breadcrumb") do
-        bc.collect do |crumb|
-          if crumb.equal? bc.last
-            content_tag(:li, "<strong>#{crumb}</strong>".html_safe, class: "active")
-          else
-            content_tag(:li, crumb)
-          end
-        end.join.html_safe
+    begin
+      bc = session[:breadcrumbs]
+      @content = content_tag("h2", bc.last)
+      @content << content_tag(:ol, class: "breadcrumb") do
+          bc.collect do |crumb|
+            if crumb.equal? bc.last
+              content_tag(:li, "<strong>#{crumb}</strong>".html_safe, class: "active")
+            else
+              content_tag(:li, crumb)
+            end
+          end.join.html_safe
+        end
+
+      # End result should look like this:
+      #  %h2 Static Tables
+      #  %ol.breadcrumb
+      #   %li
+      #    %a{:href => "index.html"} Home
+      #   %li
+      #    %a Tables
+      #   %li.active
+      #    %strong Static Tables
+
+      return @content
+    rescue NoMethodError => e
+      logger.debug "Error encountered: #{e.message}"
+      return ""
+    end
+  end
+
+  def link_to_add_fields(name, f, association, partial_path=nil, **args)
+    new_object = f.object.send(association).klass.new
+    id = new_object.object_id
+    fields = f.fields_for(association, new_object, child_index: id) do |builder|
+      if partial_path
+        render(partial_path, f: builder)
+      else
+        render(association.to_s.singularize + "_fields", f: builder)
       end
-
-    # End result should look like this:
-    #  %h2 Static Tables
-    #  %ol.breadcrumb
-    #   %li
-    #    %a{:href => "index.html"} Home
-    #   %li
-    #    %a Tables
-    #   %li.active
-    #    %strong Static Tables
-
-    return @content
+    end
+    link_to(name, '#', class: 'add_fields ' + args[:class], data: {id: id, fields: fields.gsub("\n", "")})
   end
 
 end

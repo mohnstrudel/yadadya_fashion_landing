@@ -1,16 +1,4 @@
--if object.respond_to?(:first_name)
-  .form-group
-    %label.col-lg-2.control-label First Name
-    .col-lg-10
-      =f.text_field :first_name, class: "form-control"
-  .hr-line-dashed
 
--if object.respond_to?(:second_name)
-  .form-group
-    %label.col-lg-2.control-label Last Name
-    .col-lg-10
-      =f.text_field :second_name, class: "form-control"
-  .hr-line-dashed
 
 -if object.respond_to?(:email)
   .form-group

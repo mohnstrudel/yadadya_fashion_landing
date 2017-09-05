@@ -45,3 +45,5 @@
 // REMOVED turbolinks
 
 // REMOVE require tree .
+
+//= require_tree ../../../app/assets/javascripts/admin/.

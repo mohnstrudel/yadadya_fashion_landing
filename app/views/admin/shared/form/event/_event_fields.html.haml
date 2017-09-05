@@ -1,0 +1,36 @@
+-if object.respond_to?(:place)
+  .form-group
+    %label.col-sm-2.control-label
+      Место проведения
+    .col-sm-10
+      =f.text_field :place, class: 'form-control'
+      %span.help-block.m-b-none Например "Бар Диктатура"
+  .hr-line-dashed
+
+-if object.respond_to?(:address)
+  .form-group
+    %label.col-sm-2.control-label
+      Адрес места проведения
+    .col-sm-10
+      =f.text_field :address, class: 'form-control'
+      %span.help-block.m-b-none Например: г. Москва, ул. Лесная Набережная, д. 15, корпус. 56, офис 31
+  .hr-line-dashed
+
+-if object.respond_to?(:date)
+  .form-group
+    %label.col-sm-2.control-label
+      Дата мероприятия
+    .col-sm-10
+      =f.text_field :date, class: 'form-control'
+  .hr-line-dashed
+
+-if object.respond_to?(:lectures)
+  .form-group
+    %label.col-sm-2.control-label
+      Доклады
+    .col-sm-10
+      =f.fields_for :lectures do |lecture_builder|
+        =render partial: 'admin/shared/form/event/lecture_fields', locals: { f: lecture_builder }
+      %span.help-block.m-b-none
+        =link_to_add_fields "Добавить доклад", f, :lectures, 'admin/shared/form/event/lecture_fields', class: 'btn btn-default'
+  .hr-line-dashed

@@ -28,12 +28,17 @@
                 %th
                 -if object.has_attribute? :url
                   %th URL
+                -if object.has_attribute? :picture
+                  %th Фото
                 -if object.has_attribute? :title
                   %th
                     =t('admin.form.model.title')
                 -if object.has_attribute? :first_name
                   %th
-                    =t('admin.form.model.first_name')
+                    Имя
+                -if object.has_attribute? :last_name
+                  %th
+                    Фамилия
                 -if object.has_attribute? :body
                   %th
                     =t('admin.form.model.body')
@@ -55,12 +60,18 @@
                   -if obj.respond_to?(:url)
                     %td
                       =obj.url
+                  -if obj.respond_to?(:picture)
+                    %td
+                      =image_tag obj.picture.try(:mini_thumb).try(:url)
                   -if obj.respond_to?(:title)
                     %td
                       =obj.title
                   -if obj.respond_to?(:first_name)
                     %td
                       =obj.first_name
+                  -if obj.respond_to?(:last_name)
+                    %td
+                      =obj.last_name
                   -if obj.respond_to?(:body)
                     %td
                       %small

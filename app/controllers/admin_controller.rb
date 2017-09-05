@@ -14,7 +14,7 @@ class AdminController < ApplicationController
 		splitted_url = request.original_fullpath.split("/")
 		# Remove first object
 		splitted_url.shift
-		result = splitted_url.map { |element| element.humanize.capitalize }
+		p result = splitted_url.map { |element| element.humanize.capitalize }
 		session[:breadcrumbs] = result
 		# debug
 	end

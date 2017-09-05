@@ -17,6 +17,8 @@
         %i.fa.fa-times
   .ibox-content
 
+    =render partial: "admin/shared/form/speaker/speaker_fields", locals: { f: f, object: object }
+
     -if object.respond_to?(:title)
       .form-group
         %label.col-sm-2.control-label
@@ -29,10 +31,10 @@
     -if object.respond_to?(:description)
       .form-group
         %label.col-sm-2.control-label
-          =t('admin.form.model.description')
+          Описание
         .col-sm-10
           =f.bootsy_area :description, class: 'form-control'
-          %span.help-block.m-b-none A block of help text that breaks onto a new line and may extend beyond one line.
+          %span.help-block.m-b-none Более подробное описание 
       .hr-line-dashed
     -if object.respond_to?(:body)
       .form-group
@@ -67,9 +69,11 @@
     =render partial: "admin/shared/form/user_fields", locals: { f: f, object: object }
     / User part end
 
+    =render partial: "admin/shared/form/event/event_fields", locals: { f: f, object: object }
+
 
     .hr-line-dashed
     .form-group
       .col-sm-4.col-sm-offset-2
-        =link_to t('admin.form.actions.back'), send("admin_#{local_assigns[:namespace]}#{object_name(object).pluralize}_path"), class: 'btn btn-white'
-        =f.submit t('admin.form.actions.save'), class: 'btn btn-primary'
+        =link_to "Назад", send("admin_#{local_assigns[:namespace]}#{object_name(object).pluralize}_path"), class: 'btn btn-white'
+        =f.submit "Сохранить", class: 'btn btn-primary'

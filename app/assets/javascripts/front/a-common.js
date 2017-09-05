@@ -47,7 +47,7 @@ var Yadadya = {
 	    }
 	},
 	DOMReady: function(func){
-		$(document).ready(function(){
+		$(document).on('turbolinks:load', function(){
 			Yadadya.run();
 			$(".js-menu").on("click", function(){
 				Yadadya.params.$body.removeClass("g-body_overflow");

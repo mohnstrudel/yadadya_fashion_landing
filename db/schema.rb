@@ -10,10 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170808160643) do
+ActiveRecord::Schema.define(version: 20170905142555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "events", force: :cascade do |t|
+    t.datetime "date"
+    t.string "title"
+    t.string "place"
+    t.float "long"
+    t.float "lat"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "lecture_id"
+    t.index ["lecture_id"], name: "index_events_on_lecture_id"
+  end
+
+  create_table "lecture_speakers", force: :cascade do |t|
+    t.bigint "lecture_id"
+    t.bigint "speaker_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lecture_id"], name: "index_lecture_speakers_on_lecture_id"
+    t.index ["speaker_id"], name: "index_lecture_speakers_on_speaker_id"
+  end
+
+  create_table "lectures", force: :cascade do |t|
+    t.string "timeframe"
+    t.string "title"
+    t.bigint "event_id"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "lecture_speaker_id"
+    t.index ["event_id"], name: "index_lectures_on_event_id"
+    t.index ["lecture_speaker_id"], name: "index_lectures_on_lecture_speaker_id"
+  end
 
   create_table "requests", force: :cascade do |t|
     t.string "first_name"
@@ -25,6 +59,20 @@ ActiveRecord::Schema.define(version: 20170808160643) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "facebook"
+  end
+
+  create_table "speakers", force: :cascade do |t|
+    t.string "picture"
+    t.string "last_name"
+    t.string "first_name"
+    t.text "description"
+    t.string "facebook"
+    t.string "company"
+    t.string "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "lecture_speaker_id"
+    t.index ["lecture_speaker_id"], name: "index_speakers_on_lecture_speaker_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,4 +93,10 @@ ActiveRecord::Schema.define(version: 20170808160643) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "events", "lectures"
+  add_foreign_key "lecture_speakers", "lectures"
+  add_foreign_key "lecture_speakers", "speakers"
+  add_foreign_key "lectures", "events"
+  add_foreign_key "lectures", "lecture_speakers"
+  add_foreign_key "speakers", "lecture_speakers"
 end
