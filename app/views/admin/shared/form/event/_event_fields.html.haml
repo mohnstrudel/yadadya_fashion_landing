@@ -24,6 +24,14 @@
       =f.text_field :date, class: 'form-control'
   .hr-line-dashed
 
+-if object.respond_to?(:organizers)
+  .form-group
+    %label.col-sm-2.control-label
+      Организаторы
+    .col-sm-10
+      =f.collection_select(:organizer_ids, Organizer.all, :id, :title, { include_blank: "Выбрать организатора"}, class: 'form-control select2_organizers', multiple: true)
+  .hr-line-dashed
+
 -if object.respond_to?(:lectures)
   .form-group
     %label.col-sm-2.control-label

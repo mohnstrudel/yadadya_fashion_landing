@@ -33,6 +33,7 @@ module CrudConcern
       else
         flash[:danger] = "Something not quite right"
         render :new
+        # redirect_to send("new_admin_#{object.class.name.downcase}_path")
       end
     rescue => e
       flash[:danger] = e.message

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :requests
     resources :events, except: :show
     resources :speakers, except: :show
+    resources :organizers, except: :show
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

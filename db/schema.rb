@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170905142555) do
+ActiveRecord::Schema.define(version: 20170907091011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "event_organizers", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "organizer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_organizers_on_event_id"
+    t.index ["organizer_id"], name: "index_event_organizers_on_organizer_id"
+  end
 
   create_table "events", force: :cascade do |t|
     t.datetime "date"
@@ -25,6 +34,8 @@ ActiveRecord::Schema.define(version: 20170905142555) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "lecture_id"
+    t.bigint "event_organizer_id"
+    t.index ["event_organizer_id"], name: "index_events_on_event_organizer_id"
     t.index ["lecture_id"], name: "index_events_on_lecture_id"
   end
 
@@ -47,6 +58,16 @@ ActiveRecord::Schema.define(version: 20170905142555) do
     t.bigint "lecture_speaker_id"
     t.index ["event_id"], name: "index_lectures_on_event_id"
     t.index ["lecture_speaker_id"], name: "index_lectures_on_lecture_speaker_id"
+  end
+
+  create_table "organizers", force: :cascade do |t|
+    t.string "title"
+    t.string "logo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "event_organizer_id"
+    t.string "logo_grey"
+    t.index ["event_organizer_id"], name: "index_organizers_on_event_organizer_id"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -93,10 +114,14 @@ ActiveRecord::Schema.define(version: 20170905142555) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "event_organizers", "events"
+  add_foreign_key "event_organizers", "organizers"
+  add_foreign_key "events", "event_organizers"
   add_foreign_key "events", "lectures"
   add_foreign_key "lecture_speakers", "lectures"
   add_foreign_key "lecture_speakers", "speakers"
   add_foreign_key "lectures", "events"
   add_foreign_key "lectures", "lecture_speakers"
+  add_foreign_key "organizers", "event_organizers"
   add_foreign_key "speakers", "lecture_speakers"
 end

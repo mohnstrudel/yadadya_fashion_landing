@@ -22,12 +22,15 @@
     -if object.respond_to?(:title)
       .form-group
         %label.col-sm-2.control-label
-          =t('admin.form.model.title')
+          Заголовок
         .col-sm-10
           =f.text_field :title, class: 'form-control'
       .hr-line-dashed
     / Fields for general settings start (only unique fields)
     =render partial: "admin/shared/form/general_settings_fields", locals: {f: f, object: object}
+
+    =render partial: "admin/shared/form/organizer/organizer_fields", locals: {f: f, object: object}
+    
     -if object.respond_to?(:description)
       .form-group
         %label.col-sm-2.control-label
