@@ -13,15 +13,15 @@ class Front::RequestsController < FrontController
         else
           # По номеру телефона _И_ по мейлу проверяем, есть ли такой пользователь в базе
           # (проверка идет в моделе User). Возвращает либо пользователя, либо nil
-          user = User.check_if_exists(params[:email], params[:phone])
-          elsif user
+          user = User.check_if_exists(params[:request][:email], params[:request][:phone])
+          if user
             # Если мы находим пользователя, то создаем на него билет (и тем самым)
             # связывая мероприятие и пользователя
             user.tickets.create(event_id: Event.last.id)
           else
             # Если не находим, то регистрируем пользователя и также создаем на него билет
             generated_password = Devise.friendly_token.first(8)
-            fresh_user =  User.create!(email: params[:email], password: generated_password)
+            fresh_user =  User.create!(email: params[:request][:email], password: generated_password, first_name: params[:request][:first_name], last_name: params[:request][:last_name], company: params[:request][:company], position: params[:request][:position], phone: params[:request][:phone], facebook: params[:request][:facebook])
             fresh_user.tickets.create(event_id: Event.last.id)
             # Заодно и сразу сайним ин пользователя, что бы форма при последующих
             # заходах автозаполнялась
@@ -30,6 +30,7 @@ class Front::RequestsController < FrontController
         end
         format.js
       else
+        byebug
         format.js { render partial: 'fail' }
         
       end

@@ -42,3 +42,14 @@
       %span.help-block.m-b-none
         =link_to_add_fields "Добавить доклад", f, :lectures, 'admin/shared/form/event/lecture_fields', class: 'btn btn-default'
   .hr-line-dashed
+
+-if object.respond_to?(:available_tickets)
+  .form-group
+    %label.col-sm-2.control-label
+      Билеты на событие
+    .col-sm-10
+      =f.fields_for :available_tickets do |ticket_builder|
+        =render partial: 'admin/shared/form/event/ticket_fields', locals: { f: ticket_builder }
+      %span.help-block.m-b-none
+        =link_to_add_fields "Добавить билет", f, :available_tickets, 'admin/shared/form/event/ticket_fields', class: 'btn btn-default'
+  .hr-line-dashed

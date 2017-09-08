@@ -2419,7 +2419,7 @@ jquery.inputmask@^3.3.4:
   version "3.3.4"
   resolved "https://registry.yarnpkg.com/jquery.inputmask/-/jquery.inputmask-3.3.4.tgz#ff4a8fd196f9fe28a17fd77a2da579c15a78a606"
 
-jquery@^3.2.1:
+jquery@^3.1.1, jquery@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
 
@@ -2543,6 +2543,10 @@ lcid@^1.0.0:
   resolved "https://registry.yarnpkg.com/lcid/-/lcid-1.0.0.tgz#308accafa0bc483a3867b4b6f2b9506251d1b835"
   dependencies:
     invert-kv "^1.0.0"
+
+lightbox2@^2.9.0:
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/lightbox2/-/lightbox2-2.9.0.tgz#f9a2fdb41ab3ca94bf0f769210b59bb14a5d5f62"
 
 load-json-file@^1.0.0:
   version "1.1.0"
@@ -4573,6 +4577,12 @@ tcomb@^2.5.1:
 thunky@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/thunky/-/thunky-0.1.0.tgz#bf30146824e2b6e67b0f2d7a4ac8beb26908684e"
+
+tilt.js@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/tilt.js/-/tilt.js-1.2.0.tgz#e7de9d8ea2ceef03207896e39e61cf394b51288e"
+  dependencies:
+    jquery "^3.1.1"
 
 time-stamp@^2.0.0:
   version "2.0.0"

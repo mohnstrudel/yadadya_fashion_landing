@@ -6,7 +6,7 @@ class Admin::EventsController < AdminController
 
   def index
     # @events = Event.all
-    @events = index_helper("Event")
+    @events = index_helper("Event").order(created_at: :desc)
   end
 
   def new
@@ -41,7 +41,8 @@ class Admin::EventsController < AdminController
 
   def event_params
     params.require(:event).permit(Event.attribute_names.map(&:to_sym).push(
-      lectures_attributes: [:id, :_destroy, :event_id, :timeframe, :title, :description, :speaker_ids ] ).push(organizer_ids: []))
+      lectures_attributes: [:id, :_destroy, :event_id, :timeframe, :title, :description, :speaker_ids ] ).push(organizer_ids: []).push(
+      available_tickets_attributes: [:id, :_destroy, :event_id, :ticket_type_id, :price, :amount, :description ] ))
   end
 
 end

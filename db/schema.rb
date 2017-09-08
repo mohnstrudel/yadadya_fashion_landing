@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170908102249) do
+ActiveRecord::Schema.define(version: 20170908152739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "available_tickets", force: :cascade do |t|
+    t.bigint "ticket_type_id"
+    t.bigint "event_id"
+    t.integer "amount"
+    t.float "price"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "remaining_amount"
+    t.index ["event_id"], name: "index_available_tickets_on_event_id"
+    t.index ["ticket_type_id"], name: "index_available_tickets_on_ticket_type_id"
+  end
 
   create_table "event_organizers", force: :cascade do |t|
     t.bigint "event_id"
@@ -100,6 +113,13 @@ ActiveRecord::Schema.define(version: 20170908102249) do
     t.index ["lecture_speaker_id"], name: "index_speakers_on_lecture_speaker_id"
   end
 
+  create_table "ticket_types", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tickets", force: :cascade do |t|
     t.bigint "event_id"
     t.bigint "user_id"
@@ -135,6 +155,8 @@ ActiveRecord::Schema.define(version: 20170908102249) do
     t.index ["ticket_id"], name: "index_users_on_ticket_id"
   end
 
+  add_foreign_key "available_tickets", "events"
+  add_foreign_key "available_tickets", "ticket_types"
   add_foreign_key "event_organizers", "events"
   add_foreign_key "event_organizers", "organizers"
   add_foreign_key "events", "event_organizers"

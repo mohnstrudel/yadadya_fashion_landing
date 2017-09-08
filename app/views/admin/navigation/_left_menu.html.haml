@@ -33,6 +33,8 @@
         %span.fa.arrow
         %ul.nav.nav-second-level.collapse
           %li.active
+            =link_to "Только текущие заявки", admin_requests_path(only_current: true)
+          %li
             =link_to "Все заявки", admin_requests_path
           %li
             =link_to "Новая заявка", new_admin_request_path
@@ -77,9 +79,21 @@
         %span.fa.arrow
         %ul.nav.nav-second-level.collapse
           %li.active
-            =link_to "Только текущее мероприятие", "#"
+            =link_to "Только текущее мероприятие", admin_users_path(current: true)
           %li
-            =link_to "Все зарегистрировавшиеся", "#"
+            =link_to "Все зарегистрировавшиеся", admin_users_path
+
+      =nav_link "" do
+        %i.fa.fa-ticket
+        %span.nav-label
+          Типы билетов
+        %span.fa.arrow
+        %ul.nav.nav-second-level.collapse
+          %li.active
+            =link_to "Все типы билетов", admin_ticket_types_path
+          %li
+            =link_to "Новый тип", new_admin_ticket_type_path
+
 
 
             

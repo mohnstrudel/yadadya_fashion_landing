@@ -12,8 +12,11 @@
 //
 //= require rails-ujs
 //= require jquery
+//= require jquery.inputmask/dist/jquery.inputmask.bundle
 //= require bxslider
 //= require malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar
-//= require jquery.inputmask/dist/jquery.inputmask.bundle
+//= require lightbox2
+//= require front/anime.min
+//= require tilt.js/dest/tilt.jquery.min
 //= require turbolinks
 //= require_tree ../../../app/assets/javascripts/front/.

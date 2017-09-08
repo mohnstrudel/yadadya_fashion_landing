@@ -20,6 +20,7 @@
     "jquery": "^3.2.1",
     "jquery.inputmask": "^3.3.4",
     "js-yaml": "^3.9.1",
+    "lightbox2": "^2.9.0",
     "malihu-custom-scrollbar-plugin": "^3.1.5",
     "node-sass": "^4.5.3",
     "path-complete-extname": "^0.1.0",
@@ -30,6 +31,7 @@
     "resolve-url-loader": "^2.1.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
+    "tilt.js": "^1.2.0",
     "webpack": "^3.4.1",
     "webpack-manifest-plugin": "^1.2.1",
     "webpack-merge": "^4.1.0"
