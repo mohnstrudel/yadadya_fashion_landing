@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170907091011) do
+ActiveRecord::Schema.define(version: 20170908102249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,8 +35,10 @@ ActiveRecord::Schema.define(version: 20170907091011) do
     t.datetime "updated_at", null: false
     t.bigint "lecture_id"
     t.bigint "event_organizer_id"
+    t.bigint "ticket_id"
     t.index ["event_organizer_id"], name: "index_events_on_event_organizer_id"
     t.index ["lecture_id"], name: "index_events_on_lecture_id"
+    t.index ["ticket_id"], name: "index_events_on_ticket_id"
   end
 
   create_table "lecture_speakers", force: :cascade do |t|
@@ -80,6 +82,8 @@ ActiveRecord::Schema.define(version: 20170907091011) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "facebook"
+    t.bigint "event_id"
+    t.index ["event_id"], name: "index_requests_on_event_id"
   end
 
   create_table "speakers", force: :cascade do |t|
@@ -96,6 +100,15 @@ ActiveRecord::Schema.define(version: 20170907091011) do
     t.index ["lecture_speaker_id"], name: "index_speakers_on_lecture_speaker_id"
   end
 
+  create_table "tickets", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_tickets_on_event_id"
+    t.index ["user_id"], name: "index_tickets_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -110,18 +123,31 @@ ActiveRecord::Schema.define(version: 20170907091011) do
     t.boolean "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "ticket_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "company"
+    t.string "position"
+    t.string "phone"
+    t.string "facebook"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["ticket_id"], name: "index_users_on_ticket_id"
   end
 
   add_foreign_key "event_organizers", "events"
   add_foreign_key "event_organizers", "organizers"
   add_foreign_key "events", "event_organizers"
   add_foreign_key "events", "lectures"
+  add_foreign_key "events", "tickets"
   add_foreign_key "lecture_speakers", "lectures"
   add_foreign_key "lecture_speakers", "speakers"
   add_foreign_key "lectures", "events"
   add_foreign_key "lectures", "lecture_speakers"
   add_foreign_key "organizers", "event_organizers"
+  add_foreign_key "requests", "events"
   add_foreign_key "speakers", "lecture_speakers"
+  add_foreign_key "tickets", "events"
+  add_foreign_key "tickets", "users"
+  add_foreign_key "users", "tickets"
 end

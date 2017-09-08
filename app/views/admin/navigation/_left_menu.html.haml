@@ -69,3 +69,17 @@
             =link_to "Все организаторы", admin_organizers_path
           %li
             =link_to "Новый организатор", new_admin_organizer_path
+
+      =nav_link "" do
+        %i.fa.fa-hand-peace-o
+        %span.nav-label
+          Люди
+        %span.fa.arrow
+        %ul.nav.nav-second-level.collapse
+          %li.active
+            =link_to "Только текущее мероприятие", "#"
+          %li
+            =link_to "Все зарегистрировавшиеся", "#"
+
+
+            
