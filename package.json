@@ -9,6 +9,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.6.0",
+    "bootstrap-datepicker": "^1.7.1",
     "bxslider": "^4.2.11",
     "coffee-loader": "^0.7.3",
     "coffee-script": "^1.12.7",

@@ -36,7 +36,16 @@
       Дата мероприятия
     .col-sm-10
       =f.text_field :date, class: 'form-control'
-      %span.help-block.m-b-none Дата словами, всегда число и месяц со склоненем. Например: 17 августа
+      %span.help-block.m-b-none Дата для людей, т.е. нужно написать словами, всегда число и месяц со склоненем. Например: 17 августа
+  .hr-line-dashed
+
+-if object.respond_to?(:sortable_date)
+  .form-group#datepicker
+    %label.col-sm-2.control-label
+      Дата для сортировки
+    .col-sm-10
+      =f.text_field :sortable_date, class: 'form-control'
+      %span.help-block.m-b-none Дата для сортировки, просто выбрать дату в календаре
   .hr-line-dashed
 
 -if object.respond_to?(:organizers)

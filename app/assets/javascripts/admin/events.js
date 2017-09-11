@@ -22,3 +22,12 @@ $('.select2_speakers').select2();
 
 $('.select2_ticket_type').select2();
 
+$('#datepicker input').datepicker({
+    format: "dd/mm/yyyy",
+    todayBtn: "linked",
+    keyboardNavigation: false,
+    forceParse: false,
+    calendarWeeks: true,
+    autoclose: true
+});
+

@@ -1,6 +1,6 @@
 class Front::StaticPagesController < FrontController
   def home
-    @event = Event.last
+    @event = Event.order(sortable_date: :asc).last
     @password = User.generate_password
     
     @speakers = @event.speakers

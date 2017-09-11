@@ -5,7 +5,7 @@
     .g-report__left.g-report__item.g-report__item_big
       .g-report__container
         -if @archive.try(:youtube).present?
-          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "#{@archive.youtube}-4", :width => "560"}
+          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "#{@archive.youtube}", :width => "560"}
         -else
           %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "https://www.youtube.com/embed/YE7VzlLtp-4", :width => "560"}
     .g-report__right

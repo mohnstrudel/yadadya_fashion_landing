@@ -801,6 +801,12 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
+bootstrap-datepicker@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/bootstrap-datepicker/-/bootstrap-datepicker-1.7.1.tgz#4ee7faf34888dbec7834fbf9dbe7c4277e01ddaf"
+  dependencies:
+    jquery ">=1.7.1 <4.0.0"
+
 brace-expansion@^1.1.7:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.8.tgz#c07b211c7c952ec1f8efd51a77ef0d1d3990a292"
@@ -2419,7 +2425,7 @@ jquery.inputmask@^3.3.4:
   version "3.3.4"
   resolved "https://registry.yarnpkg.com/jquery.inputmask/-/jquery.inputmask-3.3.4.tgz#ff4a8fd196f9fe28a17fd77a2da579c15a78a606"
 
-jquery@^3.1.1, jquery@^3.2.1:
+"jquery@>=1.7.1 <4.0.0", jquery@^3.1.1, jquery@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
 

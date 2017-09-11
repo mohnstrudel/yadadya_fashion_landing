@@ -42,6 +42,8 @@
 // TOASTER
 //= require_tree ../../../vendor/assets/javascripts/admin/plugins/toastr/.
 
+//= require bootstrap-datepicker/js/bootstrap-datepicker
+
 // REMOVED turbolinks
 
 // REMOVE require tree .

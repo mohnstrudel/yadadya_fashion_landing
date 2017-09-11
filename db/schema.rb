@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170911171722) do
+ActiveRecord::Schema.define(version: 20170911173805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20170911171722) do
     t.text "mesto_bottom"
     t.string "subtitle"
     t.string "event_type"
+    t.datetime "sortable_date"
     t.index ["event_organizer_id"], name: "index_events_on_event_organizer_id"
     t.index ["lecture_id"], name: "index_events_on_lecture_id"
     t.index ["ticket_id"], name: "index_events_on_ticket_id"
