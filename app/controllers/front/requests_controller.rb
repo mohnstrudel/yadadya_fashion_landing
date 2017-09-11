@@ -4,6 +4,11 @@ class Front::RequestsController < FrontController
     @request.event = Event.last
     respond_to do |format|
       if @request.save
+        # У выбранного билета уменьшаем кол-во доступных на 1 
+        # метод в модели AvailableTicket
+        ticket = AvailableTicket.find(params[:request][:available_ticket_id])
+        ticket.buy_ticket
+
         # Сначала проверяем, может пользователь уже вообще залогинин
         # Если да, то присваиваем ему мероприятие через билет
         if current_user
@@ -30,7 +35,7 @@ class Front::RequestsController < FrontController
         end
         format.js
       else
-        byebug
+        
         format.js { render partial: 'fail' }
         
       end

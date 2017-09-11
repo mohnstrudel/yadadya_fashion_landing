@@ -8,32 +8,50 @@
   %section.g-section.g-description
     .g-wrapper.js-animation.js-animation_tablet.js-animation_fadeInDown{"data-animation-delay" => "900ms"}
       %p.g-description__top
-        %span.g-strong 17 августа
-        приглашаем представителей модных брендов
-        на бизнес-завтрак
-        %span.g-strong«Fashion в digital».
+        -if @event.flag_top
+          =@event.flag_top.html_safe
+        -else
+          %span.g-strong
+            =@event.date
+          приглашаем представителей модных брендов
+          %br 
+            на бизнес-завтрак
+            %span.g-strong«Fashion в digital».
       .g-img-wrapper.g-img-wrapper_description.g-description__img
-        %img.g-img-wrapper__pic{:src => "./img/flag.svg"}/
-        %img.g-img-wrapper__bg{:src => "./img/flag_bg.svg"}/
+        =image_tag 'landing/flag.svg', class: 'g-img-wrapper__pic'
+        =image_tag 'landing/flag_bg.svg', class: 'g-img-wrapper__bg'
       %p.g-description__bottom
-        Поговорим о том, как выстроить
-        %br/
-        %nobr онлайн-продажи
-        в этом сегменте.
+        -if @event.flag_bottom
+          =@event.flag_bottom
+        -else
+          Поговорим о том, как выстроить
+          %br/
+          %nobr онлайн-продажи
+          в этом сегменте.
+
   %section.g-section.g-points
     =render partial: 'front/static_pages/home_sections/povestka'
   
   %section.g-section.g-pic-block
     .g-wrapper
       %p.g-pic-block__top.js-animation.js-animation_tablet.js-animation_fadeInDown{"data-animation-delay" => "300ms"}
-        Мы хотим сделать наш
-        %nobr бизнес-завтрак
-        максимально полезным вам. Готовьте, пожалуйста, вопросы — их можно будет задать экспертам в онце мероприятия и обсудить в кулуарах).
+        -if @event.mesto_top
+          =@event.mesto_top.html_safe
+        -else
+          Мы хотим сделать наш
+          %nobr бизнес-завтрак
+          максимально полезным вам. Готовьте, пожалуйста, вопросы — их можно будет задать экспертам в онце мероприятия и обсудить в кулуарах).
       .g-pic-block__img-wrapper.js-animation.js-animation_tablet.js-animation_fadeInLeft{"data-animation-delay" => "300ms"}
-        =image_tag 'landing/pic.png', class: 'g-pic-block__img'
+        -if @event.mesto_logo.present?
+          =image_tag @event.mesto_logo, class: 'g-pic-block__img'
+        -else
+          =image_tag 'landing/pic.png', class: 'g-pic-block__img'
         
       %p.g-pic-block__bottom.js-animation.js-animation_tablet.js-animation_fadeInUp{"data-animation-delay" => "300ms"}
-        За атмосферу мероприятия будет отвечать Dictatura Estetica Bar, культовое место на территории фабрики «Красный Октябрь», объединившее бар и бутиковое ателье по пошиву рубашек.
+        -if @event.mesto_bottom
+          =@event.mesto_bottom.html_safe
+        -else
+          За атмосферу мероприятия будет отвечать Dictatura Estetica Bar, культовое место на территории фабрики «Красный Октябрь», объединившее бар и бутиковое ателье по пошиву рубашек.
   
   %section.g-section.g-whom
     =render partial: 'front/static_pages/home_sections/komu_interesno'
@@ -56,8 +74,8 @@
   %section.g-section.g-organizers
     .g-wrapper
       %h2.g-title.js-animation.js-animation_fadeInDown
-        %span.g-title__text Организаторы
-      =render partial: 'front/static_pages/home_sections/organizatori'
+        %span.g-title__text Партнеры
+      =render partial: 'front/static_pages/home_sections/partners'
   
   %section.g-section.g-organizers-desc
     .g-wrapper
@@ -65,36 +83,17 @@
         .g-organizers-desc__left
           %h2.g-organizers-desc__title FASHION в DIgital
         .g-organizers-desc__right
-          Цикл ежемесячных
-          = succeed "," do
-            %nobr бизнес-завтраков
-          %nobr fashion-брендов
-          и 
-          %nobr digital-агентств
-          разбирают актуальные для этого сегмента рынка вопросы, связанные с разработкой
-          = succeed "," do
-            %nobr интернет-магазинов
+          Цикл ежемесячных бизнес-завтраков, посвященный развитию и продвижению модных брендов в интернете. За завтраком эксперты со стороны fashion-брендов и digital-агентств разбирают актуальные для этого сегмента рынка вопросы, связанные с разработкой интернет-магазинов, работе с соцсетями, модными изданиями и другим маркетинговым инструментарием
       .g-organizers-desc__item
         .g-organizers-desc__img-wrapper
           =image_tag 'landing/organizers/yadadya.png', class: 'g-organizers-desc__img g-organizers-desc__img_yadadya'
         %input#yadadya-toggle-text.g-toggle-checkbox{:name => "toggle-text", :type => "checkbox"}/
         .g-organizers-desc__text.g-organizers-desc__text_hidden
-          %nobr Интернет-агентство
-          «Я.Сreations» работает над повышением эффективности бизнесов своих клиентов с 2013 года. Мы занимаемся разработкой, развитием и продвижением корпоративных сайтов,
-          = succeed "," do
-            %nobr интернет-магазинов
-          = succeed "." do
-            %nobr fashion-индустрии
-          %nobr интернет-магазин
-          Aizel, ювелирный дом Юлии Давидян, дизайнер Rasario.
+          Интернет-агентство «Я.Сreations» работает над повышением эффективности бизнесов своих клиентов с 2013 года. Мы занимаемся разработкой, развитием и продвижением корпоративных сайтов, интернет-магазинов, мобильных приложений и сервисов. Отдаем предпочтение сложным комплексным проектам и нестандартным задачам. У нас много клиентов из fashion-индустрии. Среди них, например, интернет-магазин Aizel, ювелирный дом Юлии Давидян, дизайнер Rasario.
         %label.g-mobile.g-text-toggle{:for => "yadadya-toggle-text"}
           %span.g-text-toggle__small Читать полностью
           %span.g-text-toggle__open Свернуть
-      .g-organizers-desc__item
-        .g-organizers-desc__img-wrapper
-          =image_tag 'landing/organizers/jagajam.png', class: 'g-organizers-desc__img g-organizers-desc__imgjagajam'
-        .g-organizers-desc__text
-          JagaJam — аналитическая платформа для построения эффективных коммуникаций брендов с аудиторией социальных сетей.
+      
       .g-organizers-desc__item
         .g-organizers-desc__img-wrapper
           =image_tag 'landing/organizers/fbr.png', class: 'g-organizers-desc__img g-organizers-desc__img_fbr'
@@ -104,97 +103,10 @@
             %nobr digital-агентств
           %nobr IT-компаний
           и стартапов в области PR, маркетинга и продаж.
+  
   %section.g-section.g-contact
-    .g-wrapper
-      .g-contact__wrapper
-        .g-contact__info
-          %h3.g-contact__title Контакты
-          .g-contact__img-wrapper
-            %img.g-contact__img{:src => "./img/speakers/inga.png"}/
-          %h4.g-people-name.g-contact__name Инга Цохонис
-          %a.g-contact__phone +7 (977) 256 23 86
-          %a.g-contact__email inga@fbr.agency
-          %a.g-btn.g-btn_transparent.g-btn_facebook{:href => "facebook.com", :target => "_blank"}
-            %svg.g-icon
-              %use{"xlink:href" => "#ic-facebook"}
-        %form#form.g-form.g-contact__form
-          %h2.g-title.g-mobile
-            %span.g-title__text Регистрация
-          .g-input
-            %input.g-input__field.js-input{:name => "name", :placeholder => "Фамилия и имя", :type => "text"}/
-            .g-input__flag
-              %svg.g-input__icon.g-input__icon_error
-                %use{"xlink:href" => "#ic-input-error"}
-              %svg.g-input__icon.g-input__icon_success
-                %use{"xlink:href" => "#ic-input-success"}
-          .g-input
-            %input.g-input__field.js-input{:name => "position", :placeholder => "Место работы и должность", :type => "text"}/
-            .g-input__flag
-              %svg.g-input__icon.g-input__icon_error
-                %use{"xlink:href" => "#ic-input-error"}
-              %svg.g-input__icon.g-input__icon_success
-                %use{"xlink:href" => "#ic-input-success"}
-          .g-input
-            %input.g-input__field.js-input{:name => "email", :placeholder => "Email", :type => "text"}/
-            .g-input__flag
-              %svg.g-input__icon.g-input__icon_error
-                %use{"xlink:href" => "#ic-input-error"}
-              %svg.g-input__icon.g-input__icon_success
-                %use{"xlink:href" => "#ic-input-success"}
-          .g-input
-            %input.g-input__field.js-input.js-input-phone{:name => "phone", :placeholder => "Номер телефона", :type => "text"}/
-            .g-input__flag
-              %svg.g-input__icon.g-input__icon_error
-                %use{"xlink:href" => "#ic-input-error"}
-              %svg.g-input__icon.g-input__icon_success
-                %use{"xlink:href" => "#ic-input-success"}
-          .g-input
-            %input.g-input__field.js-input.js-input-social{:name => "social", :placeholder => "Аккаунт в Facebook", :type => "text"}/
-            .g-input__flag
-              %svg.g-input__icon.g-input__icon_error
-                %use{"xlink:href" => "#ic-input-error"}
-              %svg.g-input__icon.g-input__icon_success
-                %use{"xlink:href" => "#ic-input-success"}
-          .g-radio
-            %input#ticket1.g-radio__input{:disabled => "disabled", :name => "ticket", :type => "radio", :value => "type1"}/
-            %label.g-radio__label{:for => "ticket1"}
-              %i.g-radio__flag
-              %span.g-radio__price 0 P
-              Бесплатный билет (отсутствуют в продаже)
-              .g-radio__info
-                %svg.g-radio__icon
-                  %use{"xlink:href" => "#ic-info"}
-                .g-radio__info-wrapper
-                  .g-radio__info-text
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                  %i.g-radio__info-arrow
-          .g-radio
-            %input#ticket2.g-radio__input{:checked => "checked", :name => "ticket", :type => "radio", :value => "type1"}/
-            %label.g-radio__label{:for => "ticket2"}
-              %i.g-radio__flag
-              %span.g-radio__price 2 500 P
-              Vip-билет первых рядов
-              .g-radio__info
-                %svg.g-radio__icon
-                  %use{"xlink:href" => "#ic-info"}
-                .g-radio__info-wrapper
-                  .g-radio__info-text
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                  %i.g-radio__info-arrow
-          .g-radio
-            %input#ticket3.g-radio__input{:name => "ticket", :type => "radio", :value => "type1"}/
-            %label.g-radio__label{:for => "ticket3"}
-              %i.g-radio__flag
-              %span.g-radio__price 1 500 P
-              Обычный билет любого ряда в 2 строчки
-              .g-radio__info
-                %svg.g-radio__icon
-                  %use{"xlink:href" => "#ic-info"}
-                .g-radio__info-wrapper
-                  .g-radio__info-text
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                  %i.g-radio__info-arrow
-          %input.g-btn.g-btn_submit{:type => "submit", :value => "Отправить"}/
+    =render partial: 'front/static_pages/home_sections/contacts'
+
   %section.g-section.g-report
     .g-wrapper
       %h2.g-title
@@ -206,22 +118,22 @@
         .g-report__right
           .g-report__item
             .g-report__container
-              %a.g-lightbox{"data-lightbox" => "menu_2", "data-title" => "Какой-то текст", :href => "img/top-bg.jpg", :style => "background-image: url(img/top-bg.jpg)"}
+              %a.g-lightbox{"data-lightbox" => "menu_2", "data-title" => "Какой-то текст", :href => "img/top-bg.jpg", :style => "background-image: url(#{asset_path 'landing/top-bg.jpg'})"}
           .g-report__item
             .g-report__container
-              %a.g-lightbox{"data-lightbox" => "menu_2", "data-title" => "Какой-то текст", :href => "img/top-bg.jpg", :style => "background-image: url(img/top-bg.jpg)"}
+              %a.g-lightbox{"data-lightbox" => "menu_2", "data-title" => "Какой-то текст", :href => "img/top-bg.jpg", :style => "background-image: url(#{asset_path 'landing/top-bg.jpg'})"}
           .g-report__item
             .g-report__container
-              %a.g-lightbox{"data-lightbox" => "menu_2", "data-title" => "Какой-то текст", :href => "img/top-bg.jpg", :style => "background-image: url(img/top-bg.jpg)"}
+              %a.g-lightbox{"data-lightbox" => "menu_2", "data-title" => "Какой-то текст", :href => "img/top-bg.jpg", :style => "background-image: url(#{asset_path 'landing/top-bg.jpg'})"}
           .g-report__item
             .g-report__container
-              %a.g-lightbox{"data-lightbox" => "menu_2", "data-title" => "Какой-то текст", :href => "img/top-bg.jpg", :style => "background-image: url(img/top-bg.jpg)"}
+              %a.g-lightbox{"data-lightbox" => "menu_2", "data-title" => "Какой-то текст", :href => "img/top-bg.jpg", :style => "background-image: url(#{asset_path 'landing/top-bg.jpg'})"}
           .g-report__item
             .g-report__container
-              %a.g-lightbox{"data-lightbox" => "menu_2", "data-title" => "Какой-то текст", :href => "img/top-bg.jpg", :style => "background-image: url(img/top-bg.jpg)"}
+              %a.g-lightbox{"data-lightbox" => "menu_2", "data-title" => "Какой-то текст", :href => "img/top-bg.jpg", :style => "background-image: url(#{asset_path 'landing/top-bg.jpg'})"}
           .g-report__item
             .g-report__container
-              %a.g-lightbox{"data-lightbox" => "menu_2", "data-title" => "Какой-то текст", :href => "img/top-bg.jpg", :style => "background-image: url(img/top-bg.jpg)"}
+              %a.g-lightbox{"data-lightbox" => "menu_2", "data-title" => "Какой-то текст", :href => "img/top-bg.jpg", :style => "background-image: url(#{asset_path 'landing/top-bg.jpg'})"}
       %a.g-btn.g-btn_download.js-btn{:href => "#"}
         сКАЧАТЬ АРХИВ
         %svg.g-btn-icon.g-btn-icon_download
@@ -230,10 +142,8 @@
     .g-wrapper
       %p.g-copy
         © 2013 - 2017
-        = succeed "\u{418}\u{43d}\u{442}\u{435}\u{440}\u{43d}\u{435}\u{442}-\u{430}\u{433}\u{435}\u{43d}\u{442}\u{441}\u{442}\u{432}\u{43e}" do
-          %br.g-mobile/
-        = succeed "\u{412}\u{441}\u{435}" do
-          %br/
+        Интернет-агентство Я.Creations.
+        %br Все права защищены.
       %a.g-social.g-social_fb
         %svg.g-social__img.g-social__img_fb
           %use{"xlink:href" => "#ic-fb-footer"}

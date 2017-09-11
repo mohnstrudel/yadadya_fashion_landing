@@ -34,7 +34,7 @@ var Yadadya = {
 	    }
 	},
 	DOMReady: function(func){
-		$(document).ready(function(){
+		$(document).on('turbolinks:load', function(){
 			func();
 		});
 	},
@@ -46,11 +46,13 @@ Yadadya.resize(function(){
 	Yadadya.reset();
 	Yadadya.run();
 });
-$(window).on("load", function(){
+
+$(window).on("turbolinks:load", function(){
 	$(".g-img-wrapper").each(function(){
 		$(this).css({width: $(this).find(".g-img-wrapper__bg").outerWidth()});
 	});
 });
+
 Yadadya.resetItems = {
 	pointsSlider: null,
     pointsSliderSlide: null,

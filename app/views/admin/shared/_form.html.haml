@@ -31,9 +31,18 @@
           %ul.nav.nav-tabs
             %li.active
               %a{"data-toggle" => "tab", :href => "#tab-1"}
-                =t('admin.form.tab_main.title')
+                Основное
+            -if object.respond_to?(:flag_top)
+              %li
+                %a{"data-toggle" => "tab", :href => "#tab-2"}
+                  Статичная информация
+
 
           .tab-content
             #tab-1.tab-pane.active
               .panel-body
                 =render partial: "admin/shared/form/main_fields", locals: { f: f, object: object, namespace: local_assigns[:namespace] }
+            -if object.respond_to?(:flag_top)
+              #tab-2.tab-pane
+                .panel-body
+                  =render partial: "admin/shared/form/event/static_fields", locals: { f: f, object: object }

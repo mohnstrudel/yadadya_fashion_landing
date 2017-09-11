@@ -17,6 +17,6 @@
 //= require malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar
 //= require lightbox2
 //= require front/anime.min
-//= require tilt.js/dest/tilt.jquery.min
+//= require front/tilt
 //= require turbolinks
 //= require_tree ../../../app/assets/javascripts/front/.

@@ -3,31 +3,31 @@ html{
 }
 @font-face {
   font-family: 'BebasNeueBold';
-  src: url("../fonts/BebasNeueBold.ttf?cncltt") format("truetype");
+  src: font-url("BebasNeueBold.ttf?cncltt") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
 	font-family: 'Lato';
-	src: url("../fonts/Lato-LightItalic.ttf?cncltt") format("truetype");
+	src: font-url("Lato-LightItalic.ttf?cncltt") format("truetype");
 	font-weight: 300;
 	font-style: italic;
 }
 @font-face {
 	font-family: 'Lato';
-	src: url("../fonts/Lato-Light.ttf?cncltt") format("truetype");
+	src: font-url("Lato-Light.ttf?cncltt") format("truetype");
 	font-weight: 300;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'Lato';
-	src: url("../fonts/Lato-Regular.ttf?cncltt") format("truetype");
+	src: font-url("Lato-Regular.ttf?cncltt") format("truetype");
 	font-weight: 400;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'Lato';
-	src: url("../fonts/Lato-Black.ttf?cncltt") format("truetype");
+	src: font-url("Lato-Black.ttf?cncltt") format("truetype");
 	font-weight: 800;
 	font-style: normal;
 }
@@ -36,7 +36,7 @@ html{
   font-family: 'ALS Rubl';
   font-style: normal;
   font-weight: normal;
-  src: local("ALS Rubl"), url("../fonts/rouble.woff") format("woff"); 
+  src: local("ALS Rubl"), font-url("rouble.woff") format("woff"); 
 }
 .g-rub:after {
   content: "i";
@@ -47,7 +47,7 @@ html{
 	overflow-y: scroll;
 	font-family: "Lato", sans-serif;
 	background-color: #fff;
-	background-image: url(../img/bg-pattern.png);
+	background-image: url(<%= asset_path 'landing/bg-pattern.png' %>);
 	position: relative;
 	color: #0e2f22;
 }
@@ -56,7 +56,7 @@ html{
 }
 .g-content{
     background-color: #fff;
-    background-image: url(../img/bg-pattern.png);
+    background-image: url(<%= asset_path 'landing/bg-pattern.png' %>);
     position: relative;
     z-index: 1;
 }
@@ -85,7 +85,7 @@ html{
 }
 .g-main{
 	background-color: rgba(50, 55, 53, 0.7);
-	background-image: url(../img/top-bg.jpg);
+	background-image: url(<%= asset_path 'landing/top-bg.jpg' %>);
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -104,7 +104,7 @@ html{
 	position: absolute;
 	right: 0;
 	top: 0;
-	background: url(../img/top-bg-icons.svg);
+	background: url(<%= asset_path 'landing/top-bg-icons.svg' %>);
 	background-position: center left;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -114,7 +114,7 @@ html{
 .g-main:before{
 	content: "";
 	display: block;
-	background: url(../img/top-bg-waves.svg);
+	background: url(<%= asset_path 'landing/top-bg-waves.svg' %>);
 	background-position: center right;
 	background-repeat: no-repeat;
 	background-size: cover;

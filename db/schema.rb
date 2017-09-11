@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170910203011) do
+ActiveRecord::Schema.define(version: 20170911084646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,21 @@ ActiveRecord::Schema.define(version: 20170910203011) do
     t.bigint "lecture_id"
     t.bigint "event_organizer_id"
     t.bigint "ticket_id"
+    t.text "flag_top"
+    t.text "flag_bottom"
+    t.string "povestka_1_text"
+    t.string "povestka_1_logo"
+    t.string "povestka_2_text"
+    t.string "povestka_2_logo"
+    t.string "povestka_3_text"
+    t.string "povestka_3_logo"
+    t.string "povestka_4_text"
+    t.string "povestka_4_logo"
+    t.string "povestka_5_text"
+    t.string "povestka_5_logo"
+    t.text "mesto_top"
+    t.string "mesto_logo"
+    t.text "mesto_bottom"
     t.index ["event_organizer_id"], name: "index_events_on_event_organizer_id"
     t.index ["lecture_id"], name: "index_events_on_lecture_id"
     t.index ["ticket_id"], name: "index_events_on_ticket_id"
@@ -97,6 +112,8 @@ ActiveRecord::Schema.define(version: 20170910203011) do
     t.datetime "updated_at", null: false
     t.string "facebook"
     t.bigint "event_id"
+    t.bigint "available_ticket_id"
+    t.index ["available_ticket_id"], name: "index_requests_on_available_ticket_id"
     t.index ["event_id"], name: "index_requests_on_event_id"
   end
 
@@ -168,6 +185,7 @@ ActiveRecord::Schema.define(version: 20170910203011) do
   add_foreign_key "lectures", "events"
   add_foreign_key "lectures", "lecture_speakers"
   add_foreign_key "organizers", "event_organizers"
+  add_foreign_key "requests", "available_tickets"
   add_foreign_key "requests", "events"
   add_foreign_key "speakers", "lecture_speakers"
   add_foreign_key "tickets", "events"
