@@ -18,4 +18,7 @@ class Event < ApplicationRecord
   accepts_nested_attributes_for :available_tickets, :allow_destroy => true
 
   has_one :archive
+
+  mount_uploader :mesto_logo, :povestka_1_logo, :povestka_2_logo, :povestka_3_logo, :povestka_4_logo, :povestka_5_logo, PictureUploader
+
 end

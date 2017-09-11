@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170911142853) do
+ActiveRecord::Schema.define(version: 20170911152646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,6 +135,8 @@ ActiveRecord::Schema.define(version: 20170911142853) do
     t.string "facebook"
     t.bigint "event_id"
     t.bigint "available_ticket_id"
+    t.boolean "payment_status"
+    t.boolean "approval_status"
     t.index ["available_ticket_id"], name: "index_requests_on_available_ticket_id"
     t.index ["event_id"], name: "index_requests_on_event_id"
   end

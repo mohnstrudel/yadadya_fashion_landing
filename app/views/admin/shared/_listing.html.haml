@@ -52,6 +52,14 @@
                 -if object.has_attribute? :event_id
                   %th
                     Мероприятие
+
+                -if object.has_attribute? :payment_status
+                  %th
+                    Статус оплаты
+
+                -if object.has_attribute? :approval_status
+                  %th
+                    Статус аппрува
                 %th
                   Создано
                 %th.text-right
@@ -89,6 +97,24 @@
                   -if obj.respond_to?(:event)
                     %td
                       =obj.event.present? ? obj.event.title : "N/A"
+
+                  -if obj.respond_to?(:payment_status)
+                    %td
+                      -if obj.payment_status == false
+                        %span.label.label-warning Ожидается
+                      -elsif obj.payment_status == true
+                        %span.label.label-success Оплачено
+                      -else
+                        N/A
+
+                  -if obj.respond_to?(:approval_status)
+                    %td
+                      -if obj.approval_status == false
+                        %span.label.label-warning Ожидается
+                      -elsif obj.approval_status == true
+                        %span.label.label-success Аппрув
+                      -else
+                        N/A
 
                   %td
                     =time_ago_in_words(obj.created_at)
