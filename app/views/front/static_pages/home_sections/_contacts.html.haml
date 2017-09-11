@@ -5,9 +5,9 @@
       .g-contact__img-wrapper
         =image_tag 'landing/speakers/inga.png', class: 'g-contact__img'
       %h4.g-people-name.g-contact__name Инга Цохонис
-      %a.g-contact__phone +7 (977) 256 23 86
-      %a.g-contact__email inga@fbr.agency
-      %a.g-btn.g-btn_transparent.g-btn_facebook{:href => "facebook.com", :target => "_blank"}
+      %a.g-contact__phone +7 (977) 256-23-86
+      %a.g-contact__email{href: "mailto:inga@fbr.agency"} inga@fbr.agency
+      %a.g-btn.g-btn_transparent.g-btn_facebook{:href => "https://www.facebook.com/inga.tsokhonis", :target => "_blank"}
         %svg.g-icon
           %use{"xlink:href" => "#ic-facebook"}
     -if @event == Event.last

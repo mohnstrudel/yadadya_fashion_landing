@@ -50,6 +50,9 @@ gem 'carrierwave' # Required for images upload using ckeditor and in general
 gem 'mini_magick' # Required for image processing
 gem 'validates_email_format_of'
 
+gem 'delayed_job_active_record'
+gem 'capistrano3-delayed-job'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

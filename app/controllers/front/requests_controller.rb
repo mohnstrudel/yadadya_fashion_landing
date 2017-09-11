@@ -55,6 +55,8 @@ class Front::RequestsController < FrontController
         format.js { render partial: 'fail' }
         
       end
+      RequestMailer.delay(queue: "user", priority: 5).notify_user(@request)
+      RequestMailer.delay(queue: "admin", priority: 20).notify_admin(@request)
 
     end
   end
