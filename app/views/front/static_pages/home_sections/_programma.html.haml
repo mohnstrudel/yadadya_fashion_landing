@@ -7,6 +7,6 @@
         %p.g-program__title=lecture.title
         -if lecture.speakers.present?
           %p.g-program__speaker
-            ="Спикер: #{lecture.speakers.first.first_name} #{lecture.speakers.first.last_name}"
+            ="Спикер: #{lecture.speakers.first.first_name} #{lecture.speakers.first.last_name},"
             %nobr=lecture.speakers.first.position
             =lecture.speakers.first.company

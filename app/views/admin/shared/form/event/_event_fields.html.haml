@@ -47,7 +47,7 @@
       =f.collection_select(:organizer_ids, Organizer.all, :id, :title, { include_blank: "Выбрать организатора"}, class: 'form-control select2_organizers', multiple: true)
   .hr-line-dashed
 
--if object.respond_to?(:lectures)
+-if object.respond_to?(:lectures) && object.class.name != "Speaker"
   .form-group
     %label.col-sm-2.control-label
       Доклады
