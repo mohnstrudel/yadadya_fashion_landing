@@ -1,8 +1,8 @@
-class Front::StaticPagesController < FrontController
-  def home
-    @event = Event.last
-    @password = User.generate_password
-    
+class Front::EventsController < FrontController
+
+  def show
+    @event = Event.find(params[:id])
+
     @speakers = @event.speakers
     @lectures = @event.lectures
     @organizers = @event.organizers
@@ -10,6 +10,6 @@ class Front::StaticPagesController < FrontController
 
     @start_time = @event.lectures.first.timeframe.split(" - ")[0]
     @end_time = @event.lectures.last.timeframe.split(" - ")[1]
-    @archive = Event.offset(1).last.archive
+    @archive = @event.archive
   end
 end

@@ -1,3 +1,17 @@
+-if object.respond_to?(:event_type)
+  .form-group
+    %label.col-sm-2.control-label Тип мероприятия
+    .col-sm-10
+      =f.text_field :event_type, class: 'form-control'
+      %span.help-block.m-b-none Например, 'бизнес-завтрак'
+  .hr-line-dashed
+-if object.respond_to?(:subtitle)
+  .form-group
+    %label.col-sm-2.control-label Подзаголовок
+    .col-sm-10
+      =f.text_field :subtitle, class: 'form-control'
+      %span.help-block.m-b-none Текст распологается под большим зеленым заголовком
+  .hr-line-dashed
 -if object.respond_to?(:place)
   .form-group
     %label.col-sm-2.control-label
@@ -22,6 +36,7 @@
       Дата мероприятия
     .col-sm-10
       =f.text_field :date, class: 'form-control'
+      %span.help-block.m-b-none Дата словами, всегда число и месяц со склоненем. Например: 17 августа
   .hr-line-dashed
 
 -if object.respond_to?(:organizers)

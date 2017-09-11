@@ -10,7 +10,7 @@
             ="#{object.class.human_attribute_name(attribute)} - #{message}"
 .row
   -if controller_name == 'users'
-    =form_for admin_form_arguments_builder(object, local_assigns[:namespace]), :html => {:class => "form-horizontal"} do |f|
+    =form_for admin_form_arguments_builder(object, local_assigns[:namespace]), :html => {:class => "form-horizontal", :multipart => true} do |f|
       .col-lg-8
         .tabs-container
           %ul.nav.nav-tabs

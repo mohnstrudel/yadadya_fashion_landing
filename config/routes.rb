@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
     root 'static_pages#home'
     resources :requests
+    resources :events, path: '/', only: :show
   end
 
   namespace :admin do
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
     resources :organizers, except: :show
     resources :users
     resources :ticket_types, except: :show
+    resources :archives, except: :show
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

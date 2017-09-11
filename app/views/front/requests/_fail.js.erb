@@ -7,5 +7,10 @@
     $input = $('form').find("input[name='request[" + field_name + "]']");
     $input.parents(".g-input").toggleClass("g-input_error", true);
 
+    if(field_name == 'available_ticket_id'){
+      if($('#nextractor').length <= 0){
+        $("form").append('<section id="nextractor"><h2>Необходимо выбрать билет</h2> </section>');
+      } 
+    }
   }  
 

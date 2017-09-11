@@ -43,6 +43,9 @@ module CrudConcern
 
   def update_helper(object, path, params)
     if object.update(params)
+      if params[:pictures]
+        params[:pictures].each { |image| object.pictures.create(image: image) }
+      end
       respond_to do |format|
         format.html {
           redirect_to send(path, object)

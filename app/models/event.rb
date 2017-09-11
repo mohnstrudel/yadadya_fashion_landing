@@ -9,9 +9,13 @@ class Event < ApplicationRecord
   has_many :tickets, dependent: :destroy
   has_many :users, through: :tickets
 
+  has_many :speakers, through: :lectures
+
   validates :title, presence: true
 
   # Это фактичиские билеты. За использование tickets выше - СОРРИ!
   has_many :available_tickets, dependent: :destroy
   accepts_nested_attributes_for :available_tickets, :allow_destroy => true
+
+  has_one :archive
 end

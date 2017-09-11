@@ -95,5 +95,22 @@
             =link_to "Новый тип", new_admin_ticket_type_path
 
 
+      =nav_link "" do
+        %i.fa.fa-file-archive-o
+        %span.nav-label
+          Архив
+        %span.fa.arrow
+        %ul.nav.nav-second-level.collapse
+          %li.active
+            =link_to "Все записи", admin_archives_path
+          %li
+            =link_to "Новая запись", new_admin_archive_path
+
+            
+
+
+
+            
+
 
             

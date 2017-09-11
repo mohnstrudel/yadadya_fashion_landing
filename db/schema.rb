@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170911084646) do
+ActiveRecord::Schema.define(version: 20170911113452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "archives", force: :cascade do |t|
+    t.bigint "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "youtube"
+    t.string "zip"
+    t.index ["event_id"], name: "index_archives_on_event_id"
+  end
 
   create_table "available_tickets", force: :cascade do |t|
     t.bigint "ticket_type_id"
@@ -38,7 +47,7 @@ ActiveRecord::Schema.define(version: 20170911084646) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.datetime "date"
+    t.string "date"
     t.string "title"
     t.string "place"
     t.float "long"
@@ -64,6 +73,8 @@ ActiveRecord::Schema.define(version: 20170911084646) do
     t.text "mesto_top"
     t.string "mesto_logo"
     t.text "mesto_bottom"
+    t.string "subtitle"
+    t.string "event_type"
     t.index ["event_organizer_id"], name: "index_events_on_event_organizer_id"
     t.index ["lecture_id"], name: "index_events_on_lecture_id"
     t.index ["ticket_id"], name: "index_events_on_ticket_id"
@@ -99,6 +110,14 @@ ActiveRecord::Schema.define(version: 20170911084646) do
     t.string "logo_grey"
     t.string "url"
     t.index ["event_organizer_id"], name: "index_organizers_on_event_organizer_id"
+  end
+
+  create_table "pictures", force: :cascade do |t|
+    t.string "image"
+    t.bigint "archive_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["archive_id"], name: "index_pictures_on_archive_id"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -173,6 +192,7 @@ ActiveRecord::Schema.define(version: 20170911084646) do
     t.index ["ticket_id"], name: "index_users_on_ticket_id"
   end
 
+  add_foreign_key "archives", "events"
   add_foreign_key "available_tickets", "events"
   add_foreign_key "available_tickets", "ticket_types"
   add_foreign_key "event_organizers", "events"
@@ -185,6 +205,7 @@ ActiveRecord::Schema.define(version: 20170911084646) do
   add_foreign_key "lectures", "events"
   add_foreign_key "lectures", "lecture_speakers"
   add_foreign_key "organizers", "event_organizers"
+  add_foreign_key "pictures", "archives"
   add_foreign_key "requests", "available_tickets"
   add_foreign_key "requests", "events"
   add_foreign_key "speakers", "lecture_speakers"
