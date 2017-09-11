@@ -2,6 +2,22 @@ class Front::RequestsController < FrontController
   def create
     @request = Request.new(request_params)
     @request.event = Event.last
+    @ticket = AvailableTicket.find(@request.available_ticket_id)
+
+    if @ticket.approval == false && @ticket.price <= 0
+      @request.approval_status = true
+      @request.payment_status = true
+    elsif @ticket.approval == false && @ticket.price > 0
+      @request.approval_status = true
+      @request.payment_status = false
+    elsif @ticket.approval == true && @ticket.price <= 0
+      @request.approval_status = false
+      @request.payment_status = true
+    elsif @ticket.approval == true && @ticket.price > 0
+      @request.approval_status = false
+      @request.payment_status = false
+    end
+    
     respond_to do |format|
       if @request.save
         # У выбранного билета уменьшаем кол-во доступных на 1 
@@ -39,7 +55,7 @@ class Front::RequestsController < FrontController
         format.js { render partial: 'fail' }
         
       end
-      @ticket = AvailableTicket.find(@request.available_ticket_id)
+
     end
   end
 

@@ -20,8 +20,13 @@
           
         %a.input-group-addon.btn.btn-default.fileinput-exists{"data-dismiss" => "fileinput", :href => "#"} Удалить
     .col-sm-2
-      -if object.logo.present?
-        =image_tag object.logo.url(:mini_thumb)
+      -unless object.logo.try(:file).nil?
+        -if object.logo.file.exists?
+          -if object.logo.url(:mini_thumb).present?
+            =image_tag object.logo.url(:mini_thumb)
+          -else
+            =image_tag object.logo.url
+
   .hr-line-dashed
 -if object.respond_to?(:language)
   .form-group

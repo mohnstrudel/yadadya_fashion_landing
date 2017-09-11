@@ -92,7 +92,8 @@
           =image_tag 'landing/organizers/yadadya.png', class: 'g-organizers-desc__img g-organizers-desc__img_yadadya'
         %input#yadadya-toggle-text.g-toggle-checkbox{:name => "toggle-text", :type => "checkbox"}/
         .g-organizers-desc__text.g-organizers-desc__text_hidden
-          Интернет-агентство «Я.Сreations» работает над повышением эффективности бизнесов своих клиентов с 2013 года. Мы занимаемся разработкой, развитием и продвижением корпоративных сайтов, интернет-магазинов, мобильных приложений и сервисов. Отдаем предпочтение сложным комплексным проектам и нестандартным задачам. У нас много клиентов из fashion-индустрии. Среди них, например, интернет-магазин Aizel, ювелирный дом Юлии Давидян, дизайнер Rasario.
+          Интернет-агентство Я.Сreations работает над повышением эффективности бизнесов своих клиентов с 2013 года. Мы занимаемся разработкой, развитием и продвижением корпоративных сайтов, интернет-магазинов, мобильных приложений и сервисов. 
+          %p Отдаем предпочтение сложным комплексным проектам и нестандартным задачам. У нас много клиентов из fashion-индустрии. 
         %label.g-mobile.g-text-toggle{:for => "yadadya-toggle-text"}
           %span.g-text-toggle__small Читать полностью
           %span.g-text-toggle__open Свернуть
@@ -119,21 +120,21 @@
         © 2013 - 2017
         Интернет-агентство Я.Creations.
         %br Все права защищены.
-      %a.g-social.g-social_fb
+      %a.g-social.g-social_fb{href: "https://www.facebook.com/yadadyacreations/"}
         %svg.g-social__img.g-social__img_fb
           %use{"xlink:href" => "#ic-fb-footer"}
         %span.g-social__text
           Мы
           = succeed "\u{432}\u{a0}Facebook" do
             %br/
-      %a.g-social.g-social_bitrix
+      %a.g-social.g-social_bitrix{href: "https://www.1c-bitrix.ru/partners/901268.php"}
         %svg.g-social__img.g-social__img_bitrix
           %use{"xlink:href" => "#ic-bitrix"}
         %span.g-social__text
           Золотой партнёр
           %br>/
           «1С-Битрикс»
-      %a.g-social.g-social_interact
+      %a.g-social.g-social_interact{href: "http://www.i-association.ru/members/view/37"}
         %svg.g-social__img.g-social__img_interact
           %use{"xlink:href" => "#ic-interact"}
         %svg.g-social__img.g-social__img-small.g-social__img_interact_small
