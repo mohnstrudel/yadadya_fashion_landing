@@ -9,6 +9,7 @@
     %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no", :name => "viewport"}/
     = stylesheet_link_tag    'front', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'front', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'https://widget.cloudpayments.ru/bundles/cloudpayments'
   %body.g-body
     =yield
     =render 'layouts/popups'

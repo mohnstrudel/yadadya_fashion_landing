@@ -39,6 +39,7 @@ class Front::RequestsController < FrontController
         format.js { render partial: 'fail' }
         
       end
+      @ticket = AvailableTicket.find(@request.available_ticket_id)
     end
   end
 

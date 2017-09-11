@@ -42,7 +42,7 @@ class Admin::EventsController < AdminController
   def event_params
     params.require(:event).permit(Event.attribute_names.map(&:to_sym).push(
       lectures_attributes: [:id, :_destroy, :event_id, :timeframe, :title, :description, :speaker_ids ] ).push(organizer_ids: []).push(
-      available_tickets_attributes: [:id, :_destroy, :event_id, :ticket_type_id, :price, :amount, :description ] ))
+      available_tickets_attributes: [:id, :_destroy, :event_id, :ticket_type_id, :price, :amount, :description, :approval ] ))
   end
 
 end

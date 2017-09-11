@@ -12,6 +12,12 @@
         Кол-во билетов
       .col-sm-6
         =f.number_field :amount, class: 'form-control'
+
+    .form-group
+      %label.col-sm-6.text-left
+        Нужен аппрув?
+      .col-sm-6
+        =f.check_box :approval, class: 'form-control'
     .hr-line-dashed
 
   .col-sm-6

@@ -257,11 +257,27 @@ Yadadya.DOMReady(function(){
 
 
 	});
-	$(".g-popup").on("click", function(ev){
+
+  // Закрываем все попапы
+	$("#approval-popup").on("click", function(ev){
 		
 		if($(ev.target).hasClass("g-popup") || $(ev.target).closest(".js-close").length == 1)
-			togglePopup($("#success-popup"));
+			togglePopup($("#approval-popup"));
 	});
+  $("#success-nocost-popup").on("click", function(ev){
+    
+    if($(ev.target).hasClass("g-popup") || $(ev.target).closest(".js-close").length == 1)
+      togglePopup($("#success-nocost-popup"));
+  });
+  $("#success-cost-popup").on("click", function(ev){
+    
+    if($(ev.target).hasClass("g-popup") || $(ev.target).closest(".js-close").length == 1)
+    {
+      togglePopup($("#success-cost-popup"));
+    }
+  });
+
+
 	$(document).on("submit", ".g-form", function(e){
             e.preventDefault();
             var $inputs = $(this).find(".js-input"),

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
     root 'static_pages#home'
     resources :requests
-    resources :events, path: '/', only: :show
+    resources :events, only: :show
   end
 
   namespace :admin do

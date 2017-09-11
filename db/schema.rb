@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170911113452) do
+ActiveRecord::Schema.define(version: 20170911142853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,10 @@ ActiveRecord::Schema.define(version: 20170911113452) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "remaining_amount"
+    t.bigint "request_id"
+    t.boolean "approval"
     t.index ["event_id"], name: "index_available_tickets_on_event_id"
+    t.index ["request_id"], name: "index_available_tickets_on_request_id"
     t.index ["ticket_type_id"], name: "index_available_tickets_on_ticket_type_id"
   end
 
@@ -194,6 +197,7 @@ ActiveRecord::Schema.define(version: 20170911113452) do
 
   add_foreign_key "archives", "events"
   add_foreign_key "available_tickets", "events"
+  add_foreign_key "available_tickets", "requests"
   add_foreign_key "available_tickets", "ticket_types"
   add_foreign_key "event_organizers", "events"
   add_foreign_key "event_organizers", "organizers"

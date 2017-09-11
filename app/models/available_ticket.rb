@@ -2,6 +2,8 @@ class AvailableTicket < ApplicationRecord
   belongs_to :ticket_type
   belongs_to :event
 
+  
+
   after_create :set_remaining_amount
 
   def buy_ticket
