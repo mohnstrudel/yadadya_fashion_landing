@@ -10,7 +10,7 @@
       %a.g-btn.g-btn_transparent.g-btn_facebook{:href => "https://www.facebook.com/inga.tsokhonis", :target => "_blank"}
         %svg.g-icon
           %use{"xlink:href" => "#ic-facebook"}
-    -if @event == Event.last
+    -if @event == Event.most_recent
       =form_with(model: Request.new, format: 'js', html: { class: 'g-form g-contact__form', id: 'form' }, remote: true) do |f|
         %h2.g-title.g-mobile
           %span.g-title__text Регистрация

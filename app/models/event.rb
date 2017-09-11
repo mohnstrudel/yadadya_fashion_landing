@@ -26,5 +26,8 @@ class Event < ApplicationRecord
   mount_uploader :povestka_4_logo, PictureUploader
   mount_uploader :povestka_5_logo, PictureUploader
    
+  def self.most_recent
+    self.order(sortable_date: :asc).last
+  end
 
 end
