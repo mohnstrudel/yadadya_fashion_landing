@@ -19,6 +19,12 @@ class Event < ApplicationRecord
 
   has_one :archive
 
-  mount_uploader :mesto_logo, :povestka_1_logo, :povestka_2_logo, :povestka_3_logo, :povestka_4_logo, :povestka_5_logo, PictureUploader
+  mount_uploader :mesto_logo, PictureUploader
+  mount_uploader :povestka_1_logo, PictureUploader
+  mount_uploader :povestka_2_logo, PictureUploader
+  mount_uploader :povestka_3_logo, PictureUploader
+  mount_uploader :povestka_4_logo, PictureUploader
+  mount_uploader :povestka_5_logo, PictureUploader
+   
 
 end
