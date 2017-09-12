@@ -67,7 +67,7 @@
         -@tickets.each_with_index do |ticket, index|
           .g-radio
             -if ticket.remaining_amount <= 0
-              %input.g-radio__input{disabled: 'disabled', :name => "request[available_ticket_id]", :type => "radio", :value => ticket.id, id: "ticket#{index+1}"}/
+              %input.g-radio__input{:checked => (index == 0), disabled: 'disabled', :name => "request[available_ticket_id]", :type => "radio", :value => ticket.id, id: "ticket#{index+1}"}/
               %label.g-radio__label{:for => "ticket#{index+1}"}
                 %i.g-radio__flag
                 %span.g-radio__price="#{ticket.price} Р" if ticket.price > 0
@@ -84,7 +84,7 @@
                         =ticket.ticket_type.description
                     %i.g-radio__info-arrow
             -else
-              %input.g-radio__input{:name => "request[available_ticket_id]", :type => "radio", :value => ticket.id, id: "ticket#{index+1}"}/
+              %input.g-radio__input{:checked => (index == 0), :name => "request[available_ticket_id]", :type => "radio", :value => ticket.id, id: "ticket#{index+1}"}/
               %label.g-radio__label{:for => "ticket#{index+1}"}
                 %i.g-radio__flag
                 %span.g-radio__price="#{ticket.price} Р" if ticket.price > 0
