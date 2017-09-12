@@ -6,7 +6,7 @@ class Admin::EventsController < AdminController
 
   def index
     # @events = Event.all
-    @events = index_helper("Event").order(created_at: :desc)
+    @events = index_helper("Event").order(sortable_date: :desc)
   end
 
   def new

@@ -60,8 +60,11 @@
                 -if object.has_attribute? :approval_status
                   %th
                     Статус аппрува
+                -if object.has_attribute? :sortable_date
+                  %th
+                    Дата проведения
                 %th
-                  Создано
+                  Дата создания
                 %th.text-right
                   =t('admin.form.actions.main')
             %tbody
@@ -115,6 +118,10 @@
                         %span.label.label-success Аппрув
                       -else
                         N/A
+
+                  -if obj.respond_to?(:sortable_date)
+                    %td
+                      =obj.sortable_date.strftime("%d %B %Y")
 
                   %td
                     =time_ago_in_words(obj.created_at)
