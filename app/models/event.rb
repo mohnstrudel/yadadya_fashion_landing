@@ -30,4 +30,12 @@ class Event < ApplicationRecord
     self.order(sortable_date: :asc).last
   end
 
+  def start_time
+    lectures.first.timeframe.split(" - ")[0]
+  end
+
+  def end_time
+    lectures.last.timeframe.split(" - ")[1]
+  end
+
 end

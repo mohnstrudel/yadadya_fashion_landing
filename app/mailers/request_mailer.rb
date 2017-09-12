@@ -13,6 +13,7 @@ class RequestMailer < ApplicationMailer
   end
 
   def user_approval(request)
+    @event = Event.most_recent
     @request = request
     mail to: @request.email, subject: "Подтверждение участия в мероприятии"
   end

@@ -3,7 +3,7 @@
     %label.col-lg-2.control-label
       Найти мероприятие
     .col-lg-10
-      =f.select :event_id, Event.all.map { |event| [ event.title, event.id ] }, {}, { class: "form-control m-b select2_archives" } 
+      =f.select :event_id, Event.all.map { |event| [ "#{event.title} - #{event.subtitle}", event.id ] }, {}, { class: "form-control m-b select2_archives" } 
   .hr-line-dashed
 
 -if object.respond_to?(:youtube)
