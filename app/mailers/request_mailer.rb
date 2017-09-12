@@ -4,11 +4,16 @@ class RequestMailer < ApplicationMailer
 
   def notify_user(request)
     @request = request
-    mail to: @request.email, subject: "Подтверждение участия в мероприятии"
+    mail to: @request.email, subject: "Регистрация участия в мероприятии"
   end
 
   def notify_admin(request)
     @request = request
     mail to: "info@yadadya.com", subject: "Новая регистрация"
+  end
+
+  def user_approval(request)
+    @request = request
+    mail to: @request.email, subject: "Подтверждение участия в мероприятии"
   end
 end

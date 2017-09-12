@@ -1,0 +1,8 @@
+-if object.respond_to?(:approval_status)
+  .form-group
+    %label.col-sm-2.control-label
+      Аппрувить?
+    .col-sm-10
+      =f.check_box :approval_status, class: 'form-control'
+      %span.help-block.m-b-none Поставленный чекбокс - да. Непоставленный чекбокс - нет.
+  .hr-line-dashed
