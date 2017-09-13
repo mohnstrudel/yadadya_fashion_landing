@@ -10,7 +10,10 @@
     = stylesheet_link_tag    'front', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'front', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'https://widget.cloudpayments.ru/bundles/cloudpayments'
+    =render 'layouts/social_head'
   %body.g-body
     =yield
     =render 'layouts/popups'
+    =javascript_include_tag 'social'
+    =render 'layouts/social'
   =render 'layouts/icons'
