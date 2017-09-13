@@ -34,7 +34,7 @@
           .g-report__container
             %a.g-lightbox{"data-lightbox" => "menu_2", "data-title" => "Какой-то текст", :href => "img/top-bg.jpg", :style => "background-image: url(#{asset_path 'landing/top-bg.jpg'})"}
   -if @archive.try(:zip).present?
-    %a.g-btn.g-btn_download.js-btn{:href => @archive.zip}
+    %a.g-btn.g-btn_download.js-btn{:href => @archive.zip, target: "_blank"}
       сКАЧАТЬ АРХИВ
       %svg.g-btn-icon.g-btn-icon_download
         %use{"xlink:href" => "#ic-btn-download"}
