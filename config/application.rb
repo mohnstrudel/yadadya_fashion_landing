@@ -16,6 +16,8 @@ module FashionLanding
 
     config.organizer_logo_css = ["Вытянутый в ширину (слово, например)", "Вытянутый в высоту", "Симметричный"]
 
+    config.request_statuses = {'Одобрение' => 'approved', 'Отказ' => 'declined', 'На рассмотрении' => 'pending'}
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

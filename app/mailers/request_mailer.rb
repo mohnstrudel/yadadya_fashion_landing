@@ -17,4 +17,10 @@ class RequestMailer < ApplicationMailer
     @request = request
     mail to: @request.email, subject: "Подтверждение участия в мероприятии"
   end
+
+  def user_decline(request)
+    @event = Event.most_recent
+    @request = request
+    mail to: @request.email, subject: "Отказ в участии в мероприятии"
+  end
 end

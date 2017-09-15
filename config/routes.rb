@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     resources :users
     resources :ticket_types, except: :show
     resources :archives, except: :show
+    get '/requests/:id/decline', to: 'requests#decline', as: :decline_request
+    get '/requests/:id/approve', to: 'requests#approve', as: :approve_request
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

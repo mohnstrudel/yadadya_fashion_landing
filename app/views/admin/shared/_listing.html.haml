@@ -112,10 +112,12 @@
 
                   -if obj.respond_to?(:approval_status)
                     %td
-                      -if obj.approval_status == false
+                      -if obj.approval_status == "pending" || obj.approval_status == 'false'
                         %span.label.label-warning Ожидается
-                      -elsif obj.approval_status == true
+                      -elsif obj.approval_status === "true" || obj.approval_status == "approved"
                         %span.label.label-success Аппрув
+                      -elsif obj.approval_status == "declined"
+                        %span.label.label-danger Отказ
                       -else
                         N/A
 
@@ -128,5 +130,17 @@
                     =t('admin.form.created_ago')
                   %td.text-right
                     .btn-group
-                      =link_to t('admin.form.actions.edit'), send("edit_admin_#{local_assigns[:namespace]}#{object_name(object)}_path", obj), class: "btn-white btn btn-xs"
-                      =link_to t('admin.form.actions.delete'), send("admin_#{local_assigns[:namespace]}#{object_name(object)}_path", obj), method: :delete, data: {confirm: t('admin.form.confirm') }, class: "btn-white btn btn-xs"
+                      / Если объект - реквест, то показываем ещё две кнопки, принять и отклонить
+                      -if object_name(object) == 'request'
+                        =link_to "Approve", admin_approve_request_path(obj), class: "btn-primary btn btn-xs"
+                        =link_to "Decline", admin_decline_request_path(obj), class: "btn-danger btn btn-xs"
+                        %a.dropdown-toggle.btn-white.btn.btn-xs{"data-toggle" => "dropdown", :href => "#"}
+                          %i.fa.fa-wrench
+                        %ul.dropdown-menu.dropdown-user
+                          %li
+                            =link_to t('admin.form.actions.edit'), send("edit_admin_#{local_assigns[:namespace]}#{object_name(object)}_path", obj)
+                          %li
+                            =link_to t('admin.form.actions.delete'), send("admin_#{local_assigns[:namespace]}#{object_name(object)}_path", obj), method: :delete, data: {confirm: t('admin.form.confirm') }
+                      -else
+                        =link_to t('admin.form.actions.edit'), send("edit_admin_#{local_assigns[:namespace]}#{object_name(object)}_path", obj), class: "btn-white btn btn-xs"
+                        =link_to t('admin.form.actions.delete'), send("admin_#{local_assigns[:namespace]}#{object_name(object)}_path", obj), method: :delete, data: {confirm: t('admin.form.confirm') }, class: "btn-white btn btn-xs"

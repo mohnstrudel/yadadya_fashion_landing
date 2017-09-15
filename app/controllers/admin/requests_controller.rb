@@ -2,7 +2,7 @@ class Admin::RequestsController < AdminController
 
   include CrudConcern
 
-  before_action :find_request, only: [:edit, :update, :destroy]
+  before_action :find_request, only: [:edit, :update, :destroy, :approve, :decline]
   
 
   def index
@@ -12,6 +12,26 @@ class Admin::RequestsController < AdminController
       @requests = index_helper("Request").where(event_id: Event.last.id).order(created_at: :desc)
     else
       @requests = index_helper("Request").order(created_at: :desc)
+    end
+  end
+
+  def approve
+    if @request.approve
+      flash[:success] = "Пользователь #{@request.first_name} (#{@request.email}) подтвержден как участник встречи. Ему отправленно уведомление."
+      redirect_to admin_requests_path
+    else
+      flash[:danger] = "Возникли ошибки: #{@request.errors.inspect}"
+      render :index
+    end
+  end
+
+  def decline
+    if @request.decline
+      flash[:success] = "Пользователю #{@request.first_name} (#{@request.email}) отказано в участии. Ему отправленно уведомление."
+      redirect_to admin_requests_path
+    else
+      flash[:danger] = "Возникли ошибки: #{@request.errors.inspect}"
+      render :index
     end
   end
 
