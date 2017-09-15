@@ -1,7 +1,7 @@
 class Front::EventsController < FrontController
 
   def show
-    @event = Event.find(params[:id])
+    @event = Event.friendly.find(params[:id])
 
     @speakers = @event.speakers
     @lectures = @event.lectures

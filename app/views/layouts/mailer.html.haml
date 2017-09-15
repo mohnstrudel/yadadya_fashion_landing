@@ -6,6 +6,15 @@
     %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
     %title Mail
   %body{:style => "margin: 0;"}
+    :css
+      .button{
+        transition: background-color 250ms linear;
+      }
+      .button:hover{
+        background-color: #164834;
+      
+      }
+
     %div{:style => "padding: 10px;background-color: #fff;"}
       %table{:border => "0", :cellspacing => "0", :style => "max-width: 640px; width: 100%; background-color: #edf5f2; font-family: 'Lato', Arial, sans-serif"}
         %thead
@@ -19,7 +28,7 @@
               %div{:style => "margin: 40px auto 24px; width: 96px; line-height: 96px; height: 96px; background-color: #fff; border-radius: 50%; font-size: 0;"}
                 %img{:src => "#{asset_path 'landing/mailers/icon.png'}", :style => "display: inline-block; vertical-align: middle; width: 56px;height: auto;"}/
               =yield
-              / %a{:href => "#", :style => "display: inline-block; text-decoration: none; width: 230px; height: 60px; background-color: #16d287; border-radius: 30px; line-height: 60px;"}
+              / %a{:href => "#", class: 'button', :style => "display: inline-block; text-decoration: none; width: 230px; height: 60px; background-color: #16d287; border-radius: 30px; line-height: 60px;"}
               / %img{:src => "#{asset_path 'landing/mailers/buy.png'}", :style => "display: inline-block; vertical-align: middle;"}/
         %tfoot
           %tr

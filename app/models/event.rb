@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+  attr_accessor :date_slug
   has_many :lectures, dependent: :destroy
 
   accepts_nested_attributes_for :lectures, :allow_destroy => true
@@ -38,4 +39,10 @@ class Event < ApplicationRecord
     lectures.last.timeframe.split(" - ")[1]
   end
 
+  def date_slug
+    self.date_slug = self.sortable_date.strftime("%d-%B-%Y")
+  end
+
+  extend FriendlyId
+  friendly_id :date_slug, use: :slugged
 end
