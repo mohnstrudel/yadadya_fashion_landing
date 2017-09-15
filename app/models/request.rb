@@ -6,7 +6,7 @@ class Request < ApplicationRecord
   # validates :email, uniqueness: true
   validates_email_format_of :email, :message => 'Электронный адрес в неверном формате'
 
-  after_update :send_approval, :if => :approval_status_changed?
+  # after_update :send_approval, :if => :approval_status_changed?
   
   def send_approval
     RequestMailer.delay(queue: "user", priority: 5).user_approval(self)
