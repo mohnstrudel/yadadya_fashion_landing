@@ -5,16 +5,16 @@ class Front::RequestsController < FrontController
     @ticket = AvailableTicket.find(@request.available_ticket_id)
 
     if @ticket.approval == false && @ticket.price <= 0
-      @request.approval_status = true
+      @request.approval_status = "approved"
       @request.payment_status = true
     elsif @ticket.approval == false && @ticket.price > 0
-      @request.approval_status = true
+      @request.approval_status = "approved"
       @request.payment_status = false
     elsif @ticket.approval == true && @ticket.price <= 0
-      @request.approval_status = false
+      @request.approval_status = "pending"
       @request.payment_status = true
     elsif @ticket.approval == true && @ticket.price > 0
-      @request.approval_status = false
+      @request.approval_status = "pending"
       @request.payment_status = false
     end
     
