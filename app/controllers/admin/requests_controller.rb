@@ -9,7 +9,7 @@ class Admin::RequestsController < AdminController
     # @requests = Request.all
 
     if params[:only_current]
-      @requests = index_helper("Request").where(event_id: Event.last.id).order(created_at: :desc)
+      @requests = Request.where(event_id: Event.last.id).order(created_at: :desc).paginate(:page => params[:page], :per_page => Request.count)
     else
       @requests = index_helper("Request").order(created_at: :desc)
     end

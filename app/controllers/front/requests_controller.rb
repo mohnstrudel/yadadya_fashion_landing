@@ -1,7 +1,7 @@
 class Front::RequestsController < FrontController
   def create
     @request = Request.new(request_params)
-    @request.event = Event.last
+    @request.event = Event.most_recent
     @ticket = AvailableTicket.find(@request.available_ticket_id)
 
     if @ticket.approval == false && @ticket.price <= 0
@@ -28,7 +28,7 @@ class Front::RequestsController < FrontController
         # Сначала проверяем, может пользователь уже вообще залогинин
         # Если да, то присваиваем ему мероприятие через билет
         if current_user
-          current_user.tickets.create(event_id: Event.last.id)
+          current_user.tickets.create(event_id: Event.most_recent.id)
         # Далее проверяем следующие кейсы - пользователь не залогинин, но есть в системе
         # и - пользователь совсем новый
         else
@@ -38,12 +38,12 @@ class Front::RequestsController < FrontController
           if user
             # Если мы находим пользователя, то создаем на него билет (и тем самым)
             # связывая мероприятие и пользователя
-            user.tickets.create(event_id: Event.last.id)
+            user.tickets.create(event_id: Event.most_recent.id)
           else
             # Если не находим, то регистрируем пользователя и также создаем на него билет
             generated_password = Devise.friendly_token.first(8)
             fresh_user =  User.create!(email: params[:request][:email], password: generated_password, first_name: params[:request][:first_name], last_name: params[:request][:last_name], company: params[:request][:company], position: params[:request][:position], phone: params[:request][:phone], facebook: params[:request][:facebook])
-            fresh_user.tickets.create(event_id: Event.last.id)
+            fresh_user.tickets.create(event_id: Event.most_recent.id)
             # Заодно и сразу сайним ин пользователя, что бы форма при последующих
             # заходах автозаполнялась
             sign_in(:user, fresh_user)

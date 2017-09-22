@@ -144,3 +144,7 @@
                       -else
                         =link_to t('admin.form.actions.edit'), send("edit_admin_#{local_assigns[:namespace]}#{object_name(object)}_path", obj), class: "btn-white btn btn-xs"
                         =link_to t('admin.form.actions.delete'), send("admin_#{local_assigns[:namespace]}#{object_name(object)}_path", obj), method: :delete, data: {confirm: t('admin.form.confirm') }, class: "btn-white btn btn-xs"
+        .row
+          .col-sm-12.m-b-xs
+            =render partial: "admin/shared/form/listing/pager", locals: { object: object }
+            / %ul.pagination.pull-right
