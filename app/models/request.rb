@@ -8,7 +8,7 @@ class Request < ApplicationRecord
 
   # after_update :send_approval, :if => :approval_status_changed?
   
-  scope :current, -> { where(event_id: Event.most_recent.id).order(created_at: :desc) }
+  scope :current, -> { where(event_id: Event.most_recent.id) }
 
   def send_approval
     RequestMailer.delay(queue: "user", priority: 5).user_approval(self)

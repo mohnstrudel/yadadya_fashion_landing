@@ -9,7 +9,7 @@ class Admin::RequestsController < AdminController
     # @requests = Request.all
 
     if params[:only_current]
-      @requests = Request.current
+      @requests = Request.current.order(created_at: :desc)
     else
       @requests = index_helper("Request").order(created_at: :desc)
     end
