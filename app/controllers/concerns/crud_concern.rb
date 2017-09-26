@@ -17,6 +17,7 @@ module CrudConcern
     begin
       @objects = object.constantize.includes(:category).includes(:manufacturer).search(keywords).incomplete(show).manufacturer_scope(manu_id).category_scope(cat_id).send(scope).paginate(:page => params[:page], :per_page => page_size)
     rescue NoMethodError => e
+      logger.debug "Warnings encountered - #{e.message}."
       @objects = object.constantize.send(scope).paginate(:page => params[:page], :per_page => page_size)
     end
   end

@@ -7,11 +7,11 @@ class Admin::RequestsController < AdminController
 
   def index
     # @requests = Request.all
-
+    page_size = Rails.application.config.page_size
     if params[:only_current]
-      @requests = Request.current.order(created_at: :desc)
+      @requests = Request.includes(:event).current.order(created_at: :desc)
     else
-      @requests = index_helper("Request").order(created_at: :desc)
+      @requests = Request.includes(:event).order(created_at: :desc).paginate(:page => params[:page], :per_page => page_size)
     end
   end
 
