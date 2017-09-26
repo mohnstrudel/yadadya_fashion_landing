@@ -45,9 +45,13 @@
                 -if object.has_attribute? :slug
                   %th
                     ЧПУ
-                -if object.has_attribute? :email
+                -if object_name(object) == 'request'
                   %th
-                    Email
+                    Телефон
+                -else
+                  -if object.has_attribute? :email
+                    %th
+                      Email
 
                 -if object.has_attribute? :event_id
                   %th
@@ -94,9 +98,13 @@
                   -if obj.respond_to?(:slug)
                     %td
                       =url_for_page(obj)
-                  -if obj.respond_to?(:email)
+                  -if object_name(object) == 'request'
                     %td
-                      =obj.email
+                      =obj.phone
+                  -else
+                    -if obj.respond_to?(:email)
+                      %td
+                        =obj.email
                   -if obj.respond_to?(:event)
                     %td
                       =obj.event.present? ? obj.event.title : "N/A"

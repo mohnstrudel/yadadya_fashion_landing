@@ -48,4 +48,6 @@
 
 // REMOVE require tree .
 
+//= require admin/plugins/chartJs/Chart.min
+
 //= require_tree ../../../app/assets/javascripts/admin/.
