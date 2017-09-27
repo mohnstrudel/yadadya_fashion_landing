@@ -1,0 +1,4 @@
+test:
+  adapter: postgresql
+  database: fashion_landing_test
+  username: postgres
