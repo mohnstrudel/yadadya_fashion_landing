@@ -36,7 +36,7 @@ class Admin::EventsController < AdminController
   private
 
   def find_event
-    @event = Event.find(params[:id])
+    @event = Event.friendly.find(params[:id])
   end
 
   def event_params

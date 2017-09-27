@@ -1,4 +1,13 @@
 module AdminHelper
+
+  def url_for_page page
+    if page.slug.present?
+      page.slug
+    else
+      "pages/#{page.id}"
+    end
+  end
+  
   def object_name(object)
     if object.is_a?(ActiveRecord::Relation)
       return object.model.name.underscore

@@ -1,5 +1,7 @@
 module FrontHelper
 
+
+
   def get_organizer_class(organizer)
     css = organizer.logo_additional_css
 
