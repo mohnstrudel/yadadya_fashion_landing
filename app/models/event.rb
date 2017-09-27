@@ -12,7 +12,7 @@ class Event < ApplicationRecord
 
   has_many :speakers, through: :lectures
 
-  validates :title, presence: true
+  validates :title, :subtitle, :facebook, :sortable_date, presence: true
 
   # Это фактичиские билеты. За использование tickets выше - СОРРИ!
   has_many :available_tickets, dependent: :destroy
@@ -40,7 +40,11 @@ class Event < ApplicationRecord
   end
 
   def date_slug
-    self.date_slug = self.sortable_date.strftime("%d-%B-%Y")
+    begin
+      self.date_slug = self.sortable_date.strftime("%d-%B-%Y")
+    rescue
+      self.date_slug = nil
+    end
   end
 
   extend FriendlyId
