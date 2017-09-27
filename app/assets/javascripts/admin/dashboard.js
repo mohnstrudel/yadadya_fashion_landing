@@ -1,3 +1,4 @@
+if($("body").hasClass("dashboard")){
   var data = $('#chartData').data('labels');
   var keys = Object.keys(data);
   var values = Object.values(data);
@@ -24,3 +25,6 @@
   var ctx = document.getElementById("lineChart").getContext("2d");
   new Chart(ctx, {type: 'line', data: lineData, options:lineOptions});
 
+}
+
+  

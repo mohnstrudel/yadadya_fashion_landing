@@ -5,7 +5,7 @@
     = stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
-  %body
+  %body{class: "#{controller_name} #{action_name}"}
     -if current_user
       #wrapper
         =render 'admin/navigation/left_menu'
