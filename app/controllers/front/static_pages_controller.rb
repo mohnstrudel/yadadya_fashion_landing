@@ -10,10 +10,6 @@ class Front::StaticPagesController < FrontController
 
     @start_time = @event.lectures.first.timeframe.split(" - ")[0]
     @end_time = @event.lectures.last.timeframe.split(" - ")[1]
-    if Event.order(sortable_date: :asc).offset(1).exists?
-      @archive = Event.order(sortable_date: :asc).offset(1).last.archive
-    else
-      @archive = nil
-    end
+    @archive = Archive.find_proper
   end
 end

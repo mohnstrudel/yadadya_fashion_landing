@@ -84,7 +84,7 @@
                       =image_tag obj.picture.try(:mini_thumb).try(:url)
                   -if obj.respond_to?(:title)
                     %td
-                      =obj.title
+                      =obj.title    
                   -if obj.respond_to?(:first_name)
                     %td
                       =obj.first_name
@@ -107,7 +107,7 @@
                         =obj.email
                   -if obj.respond_to?(:event)
                     %td
-                      =obj.event.present? ? obj.event.title : "N/A"
+                      =obj.event.present? ? "#{obj.event.title} - #{obj.event.subtitle}" : "N/A"
 
                   -if obj.respond_to?(:payment_status)
                     %td
