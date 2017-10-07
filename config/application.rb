@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module FashionLanding
   class Application < Rails::Application
+    config.autoload_paths << config.root.join("app", "cables")
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
     config.page_size = 20

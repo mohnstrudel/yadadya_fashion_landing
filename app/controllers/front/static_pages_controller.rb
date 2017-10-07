@@ -10,6 +10,6 @@ class Front::StaticPagesController < FrontController
 
     @start_time = @event.lectures.first.timeframe.split(" - ")[0]
     @end_time = @event.lectures.last.timeframe.split(" - ")[1]
-    @archive = Archive.find_proper
+    
   end
 end
